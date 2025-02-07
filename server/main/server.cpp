@@ -31,6 +31,8 @@ static const char *TAG = "Server";
 #define NGX_UNESCAPE_URI (1)
 #define NGX_UNESCAPE_REDIRECT (2)
 
+static const char* HELLO_RESP_STR = "Hello World!";
+
 static esp_netif_t *s_example_sta_netif = NULL;
 static SemaphoreHandle_t s_semph_get_ip_addrs = NULL;
 static int s_retry_num = 0;
@@ -41,8 +43,8 @@ static void example_handler_on_wifi_connect(void *esp_netif, esp_event_base_t ev
 
 static esp_err_t stop_webserver(httpd_handle_t server);
 
-esp_err_t
-example_wifi_sta_do_disconnect(void)
+
+esp_err_t example_wifi_sta_do_disconnect(void)
 {
     ESP_ERROR_CHECK(esp_event_handler_unregister(WIFI_EVENT, WIFI_EVENT_STA_DISCONNECTED, &example_handler_on_wifi_disconnect));
     ESP_ERROR_CHECK(esp_event_handler_unregister(IP_EVENT, IP_EVENT_STA_GOT_IP, &example_handler_on_sta_got_ip));
@@ -69,7 +71,7 @@ static void example_handler_on_wifi_disconnect(void *arg, esp_event_base_t event
         example_wifi_sta_do_disconnect();
         return;
     }
-    wifi_event_sta_disconnected_t *disconn = event_data;
+    wifi_event_sta_disconnected_t *disconn = (wifi_event_sta_disconnected_t *)event_data;
     if (disconn->reason == WIFI_REASON_ROAMING)
     {
         ESP_LOGD(TAG, "station roaming, do nothing");
@@ -165,15 +167,27 @@ esp_err_t example_wifi_connect(void)
 {
     ESP_LOGI(TAG, "Start example_connect.");
     example_wifi_start();
+    // wifi_config_t wifi_config = {
+    //     .sta = {
+    //         .ssid = CONFIG_EXAMPLE_WIFI_SSID,
+    //         .password = CONFIG_EXAMPLE_WIFI_PASSWORD,
+    //         .scan_method = EXAMPLE_WIFI_SCAN_METHOD,
+    //         .sort_method = EXAMPLE_WIFI_CONNECT_AP_SORT_METHOD,
+    //         .threshold.rssi = CONFIG_EXAMPLE_WIFI_SCAN_RSSI_THRESHOLD,
+    //         .threshold.authmode = EXAMPLE_WIFI_SCAN_AUTH_MODE_THRESHOLD,
+    //     },
+    // };
     wifi_config_t wifi_config = {
         .sta = {
             .ssid = CONFIG_EXAMPLE_WIFI_SSID,
             .password = CONFIG_EXAMPLE_WIFI_PASSWORD,
             .scan_method = EXAMPLE_WIFI_SCAN_METHOD,
             .sort_method = EXAMPLE_WIFI_CONNECT_AP_SORT_METHOD,
-            .threshold.rssi = CONFIG_EXAMPLE_WIFI_SCAN_RSSI_THRESHOLD,
-            .threshold.authmode = EXAMPLE_WIFI_SCAN_AUTH_MODE_THRESHOLD,
-        },
+            .threshold = {
+                .rssi = CONFIG_EXAMPLE_WIFI_SCAN_RSSI_THRESHOLD,
+                .authmode = EXAMPLE_WIFI_SCAN_AUTH_MODE_THRESHOLD
+            }
+        }
     };
     return example_wifi_sta_do_connect(wifi_config, true);
 }
@@ -209,7 +223,7 @@ void ngx_unescape_uri(u_char **dst, u_char **src, size_t size, unsigned int type
     d = *dst;
     s = *src;
 
-    state = 0;
+    state = (decltype(state))0;
     decoded = 0;
 
     while (size--)
@@ -364,7 +378,7 @@ static esp_err_t hello_get_handler(httpd_req_t *req)
     buf_len = httpd_req_get_hdr_value_len(req, "Host") + 1;
     if (buf_len > 1)
     {
-        buf = malloc(buf_len);
+        buf = (char *)malloc(buf_len);
         ESP_RETURN_ON_FALSE(buf, ESP_ERR_NO_MEM, TAG, "buffer alloc failed");
         /* Copy null terminated value string into buffer */
         if (httpd_req_get_hdr_value_str(req, "Host", buf, buf_len) == ESP_OK)
@@ -377,7 +391,7 @@ static esp_err_t hello_get_handler(httpd_req_t *req)
     buf_len = httpd_req_get_hdr_value_len(req, "Test-Header-2") + 1;
     if (buf_len > 1)
     {
-        buf = malloc(buf_len);
+        buf = (char *)malloc(buf_len);
         ESP_RETURN_ON_FALSE(buf, ESP_ERR_NO_MEM, TAG, "buffer alloc failed");
         if (httpd_req_get_hdr_value_str(req, "Test-Header-2", buf, buf_len) == ESP_OK)
         {
@@ -389,7 +403,7 @@ static esp_err_t hello_get_handler(httpd_req_t *req)
     buf_len = httpd_req_get_hdr_value_len(req, "Test-Header-1") + 1;
     if (buf_len > 1)
     {
-        buf = malloc(buf_len);
+        buf = (char *)malloc(buf_len);
         ESP_RETURN_ON_FALSE(buf, ESP_ERR_NO_MEM, TAG, "buffer alloc failed");
         if (httpd_req_get_hdr_value_str(req, "Test-Header-1", buf, buf_len) == ESP_OK)
         {
@@ -403,7 +417,7 @@ static esp_err_t hello_get_handler(httpd_req_t *req)
     buf_len = httpd_req_get_url_query_len(req) + 1;
     if (buf_len > 1)
     {
-        buf = malloc(buf_len);
+        buf = (char *)malloc(buf_len);
         ESP_RETURN_ON_FALSE(buf, ESP_ERR_NO_MEM, TAG, "buffer alloc failed");
         if (httpd_req_get_url_query_str(req, buf, buf_len) == ESP_OK)
         {
@@ -460,7 +474,7 @@ static const httpd_uri_t hello = {
     .handler = hello_get_handler,
     /* Let's pass response string in user
      * context to demonstrate it's usage */
-    .user_ctx = "Hello World!"};
+    .user_ctx = (void*)HELLO_RESP_STR};
 
 static httpd_handle_t start_webserver(void)
 {
@@ -502,7 +516,7 @@ static void connect_handler(void *arg, esp_event_base_t event_base,
     }
 }
 
-void app_main(void)
+extern "C" void app_main(void)
 {
     static httpd_handle_t server = NULL;
 
