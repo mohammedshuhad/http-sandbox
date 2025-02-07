@@ -7,6 +7,8 @@
 #include "esp_check.h"
 #include "esp_wifi.h"
 
+#include <string>
+
 static const char *TAG = "Server";
 
 #define CONFIG_EXAMPLE_WIFI_SSID "KITEZ INCUBATION"
@@ -43,6 +45,7 @@ static void example_handler_on_wifi_connect(void *esp_netif, esp_event_base_t ev
 
 static esp_err_t stop_webserver(httpd_handle_t server);
 
+int value[10] = {10, 20, 30};
 
 esp_err_t example_wifi_sta_do_disconnect(void)
 {
@@ -167,16 +170,6 @@ esp_err_t example_wifi_connect(void)
 {
     ESP_LOGI(TAG, "Start example_connect.");
     example_wifi_start();
-    // wifi_config_t wifi_config = {
-    //     .sta = {
-    //         .ssid = CONFIG_EXAMPLE_WIFI_SSID,
-    //         .password = CONFIG_EXAMPLE_WIFI_PASSWORD,
-    //         .scan_method = EXAMPLE_WIFI_SCAN_METHOD,
-    //         .sort_method = EXAMPLE_WIFI_CONNECT_AP_SORT_METHOD,
-    //         .threshold.rssi = CONFIG_EXAMPLE_WIFI_SCAN_RSSI_THRESHOLD,
-    //         .threshold.authmode = EXAMPLE_WIFI_SCAN_AUTH_MODE_THRESHOLD,
-    //     },
-    // };
     wifi_config_t wifi_config = {
         .sta = {
             .ssid = CONFIG_EXAMPLE_WIFI_SSID,
@@ -414,6 +407,7 @@ static esp_err_t hello_get_handler(httpd_req_t *req)
 
     /* Read URL query string length and allocate memory for length + 1,
      * extra byte for null termination */
+    std::string rtrStr;
     buf_len = httpd_req_get_url_query_len(req) + 1;
     if (buf_len > 1)
     {
@@ -429,9 +423,17 @@ static esp_err_t hello_get_handler(httpd_req_t *req)
                 ESP_LOGI(TAG, "Found URL query parameter => query1=%s", param);
                 example_uri_decode(dec_param, param, strnlen(param, EXAMPLE_HTTP_QUERY_KEY_MAX_LEN));
                 ESP_LOGI(TAG, "Decoded query parameter => %s", dec_param);
-                if(strcmp(dec_param, "1") == 0)
+                if(std::string(dec_param) == "1")
                 {
-                    ESP_LOGI(TAG, "Value is 1");
+                    rtrStr = std::to_string(value[0]);
+                }
+                else if(std::string(dec_param) == "2")
+                {
+                    rtrStr = std::to_string(value[1]);
+                }
+                else if(std::string(dec_param) == "3")
+                {
+                    rtrStr = std::to_string(value[2]);
                 }
             }
             if (httpd_query_key_value(buf, "query3", param, sizeof(param)) == ESP_OK)
@@ -456,7 +458,8 @@ static esp_err_t hello_get_handler(httpd_req_t *req)
 
     /* Send response with custom headers and body set as the
      * string passed in user context*/
-    const char *resp_str = (const char *)req->user_ctx;
+    // const char *resp_str = (const char *)req->user_ctx;
+    const char *resp_str = rtrStr.c_str();
     httpd_resp_send(req, resp_str, HTTPD_RESP_USE_STRLEN);
 
     /* After sending the HTTP response the old HTTP request

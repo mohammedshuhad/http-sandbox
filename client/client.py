@@ -1,7 +1,7 @@
 import requests
 
 def make_get_request(ip_address):
-    url = f"http://{ip_address}:80/hello?query1=test&query2=example"
+    url = f"http://{ip_address}:80/hello?query1=2&query2=example"
     try:
         response = requests.get(url)
         response.raise_for_status()  # Raise an error for bad status codes
