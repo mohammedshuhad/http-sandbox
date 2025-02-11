@@ -6,8 +6,10 @@
 #include "esp_event.h"
 #include "esp_check.h"
 #include "esp_wifi.h"
+#include "cJSON.h"
 
 #include <string>
+#include <iostream>
 
 static const char *TAG = "Server";
 
@@ -33,7 +35,7 @@ static const char *TAG = "Server";
 #define NGX_UNESCAPE_URI (1)
 #define NGX_UNESCAPE_REDIRECT (2)
 
-static const char* HELLO_RESP_STR = "Hello World!";
+static const char *HELLO_RESP_STR = "Hello World!";
 
 static esp_netif_t *s_example_sta_netif = NULL;
 static SemaphoreHandle_t s_semph_get_ip_addrs = NULL;
@@ -178,10 +180,7 @@ esp_err_t example_wifi_connect(void)
             .sort_method = EXAMPLE_WIFI_CONNECT_AP_SORT_METHOD,
             .threshold = {
                 .rssi = CONFIG_EXAMPLE_WIFI_SCAN_RSSI_THRESHOLD,
-                .authmode = EXAMPLE_WIFI_SCAN_AUTH_MODE_THRESHOLD
-            }
-        }
-    };
+                .authmode = EXAMPLE_WIFI_SCAN_AUTH_MODE_THRESHOLD}}};
     return example_wifi_sta_do_connect(wifi_config, true);
 }
 
@@ -423,15 +422,15 @@ static esp_err_t hello_get_handler(httpd_req_t *req)
                 ESP_LOGI(TAG, "Found URL query parameter => query1=%s", param);
                 example_uri_decode(dec_param, param, strnlen(param, EXAMPLE_HTTP_QUERY_KEY_MAX_LEN));
                 ESP_LOGI(TAG, "Decoded query parameter => %s", dec_param);
-                if(std::string(dec_param) == "1")
+                if (std::string(dec_param) == "1")
                 {
                     rtrStr = std::to_string(value[0]);
                 }
-                else if(std::string(dec_param) == "2")
+                else if (std::string(dec_param) == "2")
                 {
                     rtrStr = std::to_string(value[1]);
                 }
-                else if(std::string(dec_param) == "3")
+                else if (std::string(dec_param) == "3")
                 {
                     rtrStr = std::to_string(value[2]);
                 }
@@ -471,13 +470,112 @@ static esp_err_t hello_get_handler(httpd_req_t *req)
     return ESP_OK;
 }
 
+static esp_err_t ctrl_put_handler(httpd_req_t *req)
+{
+    char *buf;
+    int total_len = req->content_len;
+    int cur_len = 0;
+
+    // Allocate memory for the request content
+    buf = (char *)malloc(total_len + 1);
+    if (buf == NULL)
+    {
+        ESP_LOGE(TAG, "Failed to allocate memory for PUT data");
+        httpd_resp_send_500(req);
+        return ESP_FAIL;
+    }
+    buf[total_len] = '\0';
+
+    // Receive the request content
+    while (cur_len < total_len)
+    {
+        int received = httpd_req_recv(req, buf + cur_len, total_len - cur_len);
+        if (received <= 0)
+        {
+            // Timeout or error occurred
+            free(buf);
+            if (received == HTTPD_SOCK_ERR_TIMEOUT)
+            {
+                httpd_resp_send_408(req);
+            }
+            return ESP_FAIL;
+        }
+        cur_len += received;
+    }
+
+    ESP_LOGI(TAG, "Received PUT data: %s", buf);
+
+    // Parse the received data as JSON without using cJSON
+    // Process the received data
+    // Here you can parse the JSON or process the data as needed
+    if (buf[0] == '0')
+    {
+        value[0] = 0; // Example: modify the global value array
+        ESP_LOGI(TAG, "Set value[0] to 0");
+    }
+    else
+    {
+        value[0] = 1; // Example: modify the global value array
+        ESP_LOGI(TAG, "Set value[0] to 1");
+    }
+
+    cJSON *root = cJSON_Parse(buf);
+    if (root == NULL)
+    {
+        const char *error_ptr = cJSON_GetErrorPtr();
+        if (error_ptr != NULL)
+        {
+            ESP_LOGE(TAG, "Error parsing JSON: %s", error_ptr);
+        }
+        free(buf);
+        httpd_resp_send_500(req);
+        return ESP_FAIL;
+    }
+
+    // Get the "value" field from JSON
+    cJSON *value_obj = cJSON_GetObjectItem(root, "value");
+    if (cJSON_IsNumber(value_obj))
+    {
+        value[0] = value_obj->valueint;
+        ESP_LOGI(TAG, "Set value[0] to %d", value[0]);
+    }
+    else
+    {
+        ESP_LOGE(TAG, "Invalid or missing 'value' field in JSON");
+        cJSON_Delete(root);
+        free(buf);
+        httpd_resp_send_408(req);
+        return ESP_FAIL;
+    }
+
+    // Clean up
+    cJSON_Delete(root);
+
+    // Clean up
+    free(buf);
+
+    // Send response
+    httpd_resp_set_type(req, "application/json");
+    char resp[64];
+    snprintf(resp, sizeof(resp), "{\"status\":\"ok\",\"value\":%d}", value[0]);
+    httpd_resp_send(req, resp, HTTPD_RESP_USE_STRLEN);
+
+    return ESP_OK;
+}
+
 static const httpd_uri_t hello = {
     .uri = "/hello",
     .method = HTTP_GET,
     .handler = hello_get_handler,
     /* Let's pass response string in user
      * context to demonstrate it's usage */
-    .user_ctx = (void*)HELLO_RESP_STR};
+    .user_ctx = (void *)HELLO_RESP_STR};
+
+static const httpd_uri_t ctrl = {
+    .uri = "/ctrl",
+    .method = HTTP_PUT,
+    .handler = ctrl_put_handler,
+    .user_ctx = NULL};
 
 static httpd_handle_t start_webserver(void)
 {
@@ -493,7 +591,7 @@ static httpd_handle_t start_webserver(void)
         ESP_LOGI(TAG, "Registering URI handlers");
         httpd_register_uri_handler(server, &hello);
         // httpd_register_uri_handler(server, &echo);
-        // httpd_register_uri_handler(server, &ctrl);
+        httpd_register_uri_handler(server, &ctrl);
         // httpd_register_uri_handler(server, &any);
         return server;
     }
