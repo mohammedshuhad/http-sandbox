@@ -171,6 +171,55 @@ def set_repeat_bell(ip_address, repeat, interval, up_to_time, bell_index ):
     }
     return make_put_request(ip_address,"set_repeat_bell", data)
 
+def set_all_dom(ip_address):
+    data = {
+        "data": [
+            {
+                "dom_index": 0,
+                "dom_name": "Summer solicitice",
+                "activate": True,
+                "day": 0,
+                "occurrence": 4
+            },
+            {
+                "dom_index": 1,
+                "dom_name": "summer 2",
+                "activate": False,
+                "day": 0,
+                "occurrence": 4
+            },
+            {
+                "dom_index": 2,
+                "dom_name": "Summer 3",
+                "activate": True,
+                "day": 0,
+                "occurrence": 4
+            },
+            {
+                "dom_index": 3,
+                "dom_name": "Winter SOlicitice",
+                "activate": True,
+                "day": 0,
+                "occurrence": 4
+            },
+            {
+                "dom_index": 4,
+                "dom_name": "Day of Month 2",
+                "activate": True,
+                "day": 0,
+                "occurrence": 4
+            },
+            {
+                "dom_index": 5,
+                "dom_name": "Day of Month 3",
+                "activate": True,
+                "day": 0,
+                "occurrence": 4
+            }
+        ]
+    }
+    return make_put_request(ip_address, "set_all_dom", data)
+
 def add_bell(ip_address, bell_index, season_index, hour, minute, schedule):
     if bell_index < 0 or bell_index > 3:
         print("Bell index must be in (0-3)")
@@ -253,7 +302,8 @@ if __name__ == "__main__":
     # put_response = set_repeat_bell(ip, False, 1, 1, 3)
     # put_response = add_bell(ip, 3, 0, 4, 30, [False,True,False,False,False,False,True])
     # put_response = send_firmware(ip, "pulsator-firmware.bin")
-    put_response = set_dom(ip, 1)
+    # put_response = set_dom(ip, 1)
+    put_response = set_all_dom(ip)
     if put_response:
         print("PUT Response from server (Set):")
         print(put_response)
