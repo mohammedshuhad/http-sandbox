@@ -48,6 +48,30 @@ def get_dom(ip_address, dom_index):
     dom_info = make_get_request_with_dom_query(ip_address, endpoint, dom_index)
     return dom_info
 
+def make_set_request_with_dom_query(ip_address, endpoint, query_param, data):
+    url = f"http://{ip_address}:80/{endpoint}?dom_index={query_param}"
+    headers = {
+        'Accept': 'application/json',
+        'Authorization': f'Basic {encoded}'
+    }
+    try:
+        response = requests.put(url, json=data, headers=headers)
+        response.raise_for_status()  # Raise an error for bad status codes
+        return response.text
+    except requests.exceptions.RequestException as e:
+        print(f"An error occurred: {e}")
+        return None
+    
+def set_dom(ip_address, dom_index):
+    endpoint = "set_dom"
+    data = { 
+        "activate": True, 
+        "day": 3, 
+        "occurrence": 4 
+    }
+    dom_info = make_set_request_with_dom_query(ip_address, endpoint, dom_index, data)
+    return dom_info
+    
 def make_put_request(ip_address, endpoint, data):
     url = f"http://{ip_address}:80/{endpoint}"
     headers = {
@@ -213,13 +237,13 @@ if __name__ == "__main__":
     
     # get_response = get_ring_bell(ip)
     # get_response = get_repeat_bell(ip)
-    get_response = get_dom(ip, 3)
+    # get_response = get_dom(ip, 3)
     
-    if get_response:
-        print("GET Response from server:")
-        print(get_response)
-    else:
-        print("Failed to get")
+    # if get_response:
+    #     print("GET Response from server:")
+    #     print(get_response)
+    # else:
+    #     print("Failed to get")
 
 
     # put_response = set_season(ip, 0)
@@ -229,11 +253,12 @@ if __name__ == "__main__":
     # put_response = set_repeat_bell(ip, False, 1, 1, 3)
     # put_response = add_bell(ip, 3, 0, 4, 30, [False,True,False,False,False,False,True])
     # put_response = send_firmware(ip, "pulsator-firmware.bin")
-    # if put_response:
-    #     print("PUT Response from server (Set):")
-    #     print(put_response)
-    # else:
-    #     print("Failed to set")
+    put_response = set_dom(ip, 1)
+    if put_response:
+        print("PUT Response from server (Set):")
+        print(put_response)
+    else:
+        print("Failed to set")
 
 
 
