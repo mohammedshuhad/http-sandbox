@@ -245,6 +245,17 @@ def add_bell(ip_address, bell_index, season_index, hour, minute, schedule):
     }
     return make_put_request(ip_address, "add_bell", data)
 
+def edit_bell(ip_address, bell_id, bell_index, season_index, hour, minute, schedule):
+    data = {
+        "bell_id": bell_id,
+        "bell_index": bell_index,
+        "season_index": season_index,
+        "hour": hour,
+        "min": minute,
+        "schedule": schedule
+    }
+    return make_put_request(ip_address, "edit_bell", data)
+
 def send_firmware(ip_address, firmware_path):
     url = f"http://{ip_address}:80/set_ota_bin"
 
@@ -303,7 +314,8 @@ if __name__ == "__main__":
     # put_response = add_bell(ip, 3, 0, 4, 30, [False,True,False,False,False,False,True])
     # put_response = send_firmware(ip, "pulsator-firmware.bin")
     # put_response = set_dom(ip, 1)
-    put_response = set_all_dom(ip)
+    #put_response = set_all_dom(ip)
+    put_response = edit_bell(ip, 2, 2, 1, 8, 40, [True, True, False, False, False, True, False])
     if put_response:
         print("PUT Response from server (Set):")
         print(put_response)
