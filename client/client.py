@@ -2,20 +2,20 @@ import requests
 import base64
 credentials = "admin:password123"
 encoded = base64.b64encode(credentials.encode()).decode()
-# print(encoded)  # Use this in your client's Authorization header
 
-# def make_get_request(ip_address):
-#     url = f"http://{ip_address}:80/get?query1=1&query2=as"
-#     try:
-#         response = requests.get(url)
-#         response.raise_for_status()  # Raise an error for bad status codes
-#         return response.text
-#     except requests.exceptions.RequestException as e:
-#         print(f"An error occurred: {e}")
-#         return None
-
-
-
+def make_get_request_with_dom_query(ip_address, endpoint, query_param):
+    url = f"http://{ip_address}:80/{endpoint}?dom_index={query_param}"
+    headers = {
+        'Accept': 'application/json',
+        'Authorization': f'Basic {encoded}'
+    }
+    try:
+        response = requests.get(url, headers=headers)
+        response.raise_for_status()  # Raise an error for bad status codes
+        return response.text
+    except requests.exceptions.RequestException as e:
+        print(f"An error occurred: {e}")
+        return None
 
 def make_get_request(ip_address, endpoint):
 
@@ -33,7 +33,6 @@ def make_get_request(ip_address, endpoint):
         print(f"An error occurred: {e}")
         return None
 
-
 def get_ring_bell(ip_address):
     endpoint = "get_ring_bell"
     bell_info = make_get_request(ip_address, endpoint)
@@ -44,7 +43,10 @@ def get_repeat_bell(ip_address):
     repeat_bell_info = make_get_request(ip_address, endpoint)
     return repeat_bell_info
 
-
+def get_dom(ip_address, dom_index):
+    endpoint = "get_dom"
+    dom_info = make_get_request_with_dom_query(ip_address, endpoint, dom_index)
+    return dom_info
 
 def make_put_request(ip_address, endpoint, data):
     url = f"http://{ip_address}:80/{endpoint}"
@@ -170,31 +172,68 @@ def add_bell(ip_address, bell_index, season_index, hour, minute, schedule):
     }
     return make_put_request(ip_address, "add_bell", data)
 
+def send_firmware(ip_address, firmware_path):
+    url = f"http://{ip_address}:80/set_ota_bin"
+
+    print(f"Uploading firmware to {url}...")
+    
+    # Basic auth credentials
+    headers = {
+        'Authorization': f'Basic {credentials}',
+        'Content-Type': 'application/octet-stream'
+    }
+    
+    try:
+        # Open and read the firmware file in binary mode
+        with open(firmware_path, 'rb') as f:
+            firmware_data = f.read()
+        
+        # Send PUT request
+        response = requests.put(
+            url, 
+            data=firmware_data,
+            headers=headers,
+            timeout=30  # Increased timeout for large files
+        )
+        
+        # Check response
+        if response.status_code == 200:
+            print("Firmware upload successful!")
+            print("Response:", response.json())
+        else:
+            print(f"Error: Server returned status code {response.status_code}")
+            print("Response:", response.text)
+            
+    except Exception as e:
+        print(f"Error occurred: {str(e)}")
+
 if __name__ == "__main__":
 
-    ip = "192.168.0.195"  # Replace with your ESP32's IP address
+    ip = "192.168.0.151"  # Replace with your ESP32's IP address
     
     # get_response = get_ring_bell(ip)
     # get_response = get_repeat_bell(ip)
+    get_response = get_dom(ip, 3)
     
-    # if get_response:
-    #     print("GET Response from server:")
-    #     print(get_response)
-    # else:
-    #     print("Failed to get")
-
-
-    #put_response = set_season(ip, 0)
-    #put_response = set_auto_sleep(ip, False)
-    #put_response = set_select_bell(ip, 8, True)
-    # put_response = set_ring_bell(ip, 0, True, False)
-    #put_response = set_repeat_bell(ip, False, 1, 1, 3)
-    put_response = add_bell(ip, 3, 0, 4, 30, [False,True,False,False,False,False,True])
-    if put_response:
-        print("PUT Response from server (Set):")
-        print(put_response)
+    if get_response:
+        print("GET Response from server:")
+        print(get_response)
     else:
-        print("Failed to set")
+        print("Failed to get")
+
+
+    # put_response = set_season(ip, 0)
+    # put_response = set_auto_sleep(ip, False)
+    # put_response = set_select_bell(ip, 8, True)
+    # put_response = set_ring_bell(ip, 0, True, False)
+    # put_response = set_repeat_bell(ip, False, 1, 1, 3)
+    # put_response = add_bell(ip, 3, 0, 4, 30, [False,True,False,False,False,False,True])
+    # put_response = send_firmware(ip, "pulsator-firmware.bin")
+    # if put_response:
+    #     print("PUT Response from server (Set):")
+    #     print(put_response)
+    # else:
+    #     print("Failed to set")
 
 
 
