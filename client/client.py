@@ -3,6 +3,8 @@ import base64
 credentials = "admin:password123"
 encoded = base64.b64encode(credentials.encode()).decode()
 
+####                                              GET                                                  ####
+
 def make_get_request_with_dom_query(ip_address, endpoint, query_param):
     url = f"http://{ip_address}:80/{endpoint}?dom_index={query_param}"
     headers = {
@@ -47,6 +49,23 @@ def get_dom(ip_address, dom_index):
     endpoint = "get_dom"
     dom_info = make_get_request_with_dom_query(ip_address, endpoint, dom_index)
     return dom_info
+
+def view_bells(ip_address):
+    endpoint = "view_bells"
+    view_info = make_get_request(ip_address, endpoint)
+    return view_info
+
+def get_dop(ip_address):
+    endpoint = "get_dop"
+    dop_info = make_get_request(ip_address, endpoint)
+    return dop_info
+
+def dop_view_bell(ip_address):
+    endpoint = "dop_view_bell"
+    dop_info = make_get_request(ip_address, endpoint)
+    return dop_info
+
+####                                              SET                                                  ####
 
 def make_set_request_with_dom_query(ip_address, endpoint, query_param, data):
     url = f"http://{ip_address}:80/{endpoint}?dom_index={query_param}"
@@ -256,6 +275,48 @@ def edit_bell(ip_address, bell_id, bell_index, season_index, hour, minute, sched
     }
     return make_put_request(ip_address, "edit_bell", data)
 
+def delete_bell(ip_address, bell_id):
+    data = {
+        "bell_id": bell_id
+    }
+    return make_put_request(ip_address, "delete_bell", data)
+
+def set_dop(ip_address, dop_name, activate, day, month, year):
+    data = {
+        "dop_name": dop_name,
+        "activate": activate,
+        "day": day,
+        "month": month,
+        "year": year
+    }
+    return make_put_request(ip_address, "set_dop", data)
+
+def dop_add_bell(ip_address, bell_index, hour, minute):
+    data = {
+        "bell_index": bell_index,
+        "hour": hour,
+        "minute": minute
+    }
+    return make_put_request(ip_address, "dop_add_bell", data)
+
+def dop_edit_bell(ip_address, bell_id, bell_index, hour, minute):
+    data = {
+        "bell_id": bell_id,
+        "bell_index": bell_index,
+        "hour": hour,
+        "minute": minute
+    }
+    return make_put_request(ip_address, "dop_edit_bell", data)
+
+def dop_delete_bell(ip_address, bell_id):
+    data = {
+        "bell_id": bell_id
+    }
+    return make_put_request(ip_address, "dop_delete_bell", data)
+
+
+
+
 def send_firmware(ip_address, firmware_path):
     url = f"http://{ip_address}:80/set_ota_bin"
 
@@ -293,12 +354,14 @@ def send_firmware(ip_address, firmware_path):
 
 if __name__ == "__main__":
 
-    ip = "192.168.0.151"  # Replace with your ESP32's IP address
+    ip = "192.168.0.105"  # Replace with your ESP32's IP address
     
     # get_response = get_ring_bell(ip)
     # get_response = get_repeat_bell(ip)
     # get_response = get_dom(ip, 3)
-    
+    # get_response = get_dop(ip)
+    # get_response = view_bells(ip)
+    # get_response = dop_view_bell(ip)
     # if get_response:
     #     print("GET Response from server:")
     #     print(get_response)
@@ -311,11 +374,16 @@ if __name__ == "__main__":
     # put_response = set_select_bell(ip, 8, True)
     # put_response = set_ring_bell(ip, 0, True, False)
     # put_response = set_repeat_bell(ip, False, 1, 1, 3)
-    # put_response = add_bell(ip, 3, 0, 4, 30, [False,True,False,False,False,False,True])
+    # put_response = add_bell(ip, 3, 0, 12, 0, [False,True,False,False,False,False,True])
     # put_response = send_firmware(ip, "pulsator-firmware.bin")
     # put_response = set_dom(ip, 1)
     #put_response = set_all_dom(ip)
-    put_response = edit_bell(ip, 2, 2, 1, 8, 40, [True, True, False, False, False, True, False])
+    #put_response = edit_bell(ip, 2, 2, 1, 8, 40, [True, True, False, False, False, True, False])
+    # put_response = delete_bell(ip, 2)
+    #put_response = set_dop(ip, "Day of Program", False, 25, 3, 35)
+    #put_response = dop_add_bell(ip, 3, 13, 50)
+    #put_response = dop_edit_bell(ip, 0, 0, 4, 55)
+    put_response = dop_delete_bell(ip, 3)
     if put_response:
         print("PUT Response from server (Set):")
         print(put_response)
