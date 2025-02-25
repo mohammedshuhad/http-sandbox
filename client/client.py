@@ -45,15 +45,25 @@ def get_repeat_bell(ip_address):
     repeat_bell_info = make_get_request(ip_address, endpoint)
     return repeat_bell_info
 
+def view_bells(ip_address):
+    endpoint = "view_bells"
+    view_info = make_get_request(ip_address, endpoint)
+    return view_info
+
+def get_all_dom(ip_address):
+    endpoint = "get_all_dom"
+    all_dom_info = make_get_request(ip_address,endpoint)
+    return all_dom_info
+
 def get_dom(ip_address, dom_index):
     endpoint = "get_dom"
     dom_info = make_get_request_with_dom_query(ip_address, endpoint, dom_index)
     return dom_info
 
-def view_bells(ip_address):
-    endpoint = "view_bells"
-    view_info = make_get_request(ip_address, endpoint)
-    return view_info
+def dom_view_bell(ip_address):
+    endpoint = "dom_view_bell"
+    dom_info = make_get_request(ip_address, endpoint)
+    return dom_info
 
 def get_dop(ip_address):
     endpoint = "get_dop"
@@ -81,15 +91,6 @@ def make_set_request_with_dom_query(ip_address, endpoint, query_param, data):
         print(f"An error occurred: {e}")
         return None
     
-def set_dom(ip_address, dom_index):
-    endpoint = "set_dom"
-    data = { 
-        "activate": True, 
-        "day": 3, 
-        "occurrence": 4 
-    }
-    dom_info = make_set_request_with_dom_query(ip_address, endpoint, dom_index, data)
-    return dom_info
     
 def make_put_request(ip_address, endpoint, data):
     url = f"http://{ip_address}:80/{endpoint}"
@@ -119,7 +120,6 @@ def set_season(ip_address, season_index):
     }
     return make_put_request(ip_address, "set_season", data)
 
-
 def set_auto_sleep(ip_address, value):
     if value not in(True, False):
         print("Enter True or False")
@@ -129,6 +129,16 @@ def set_auto_sleep(ip_address, value):
         "auto_sleep": value
     }
     return make_put_request(ip_address, "set_auto_sleep", data)
+
+def set_auto_bell(ip_address, value):
+    if value not in(True, False):
+        print("Enter True or False")
+        return None
+
+    data = {
+        "auto_bell": value
+    }
+    return make_put_request(ip_address, "set_auto_bell", data)
 
 def set_select_bell(ip_address, bell_index, state):
     if bell_index not in (1, 2, 3, 4, 5, 6, 7, 8):
@@ -190,55 +200,6 @@ def set_repeat_bell(ip_address, repeat, interval, up_to_time, bell_index ):
     }
     return make_put_request(ip_address,"set_repeat_bell", data)
 
-def set_all_dom(ip_address):
-    data = {
-        "data": [
-            {
-                "dom_index": 0,
-                "dom_name": "Summer solicitice",
-                "activate": True,
-                "day": 0,
-                "occurrence": 4
-            },
-            {
-                "dom_index": 1,
-                "dom_name": "summer 2",
-                "activate": False,
-                "day": 0,
-                "occurrence": 4
-            },
-            {
-                "dom_index": 2,
-                "dom_name": "Summer 3",
-                "activate": True,
-                "day": 0,
-                "occurrence": 4
-            },
-            {
-                "dom_index": 3,
-                "dom_name": "Winter SOlicitice",
-                "activate": True,
-                "day": 0,
-                "occurrence": 4
-            },
-            {
-                "dom_index": 4,
-                "dom_name": "Day of Month 2",
-                "activate": True,
-                "day": 0,
-                "occurrence": 4
-            },
-            {
-                "dom_index": 5,
-                "dom_name": "Day of Month 3",
-                "activate": True,
-                "day": 0,
-                "occurrence": 4
-            }
-        ]
-    }
-    return make_put_request(ip_address, "set_all_dom", data)
-
 def add_bell(ip_address, bell_index, season_index, hour, minute, schedule):
     if bell_index < 0 or bell_index > 3:
         print("Bell index must be in (0-3)")
@@ -280,6 +241,88 @@ def delete_bell(ip_address, bell_id):
         "bell_id": bell_id
     }
     return make_put_request(ip_address, "delete_bell", data)
+
+def set_all_dom(ip_address):
+    data = {
+        "data": [
+            {
+                "dom_index": 0,
+                "dom_name": "Summer solicitice",
+                "activate": True,
+                "day": 0,
+                "occurrence": 4
+            },
+            {
+                "dom_index": 1,
+                "dom_name": "summer 2",
+                "activate": False,
+                "day": 0,
+                "occurrence": 4
+            },
+            {
+                "dom_index": 2,
+                "dom_name": "Summer 3",
+                "activate": True,
+                "day": 0,
+                "occurrence": 4
+            },
+            {
+                "dom_index": 3,
+                "dom_name": "Winter SOlicitice",
+                "activate": True,
+                "day": 0,
+                "occurrence": 4
+            },
+            {
+                "dom_index": 4,
+                "dom_name": "Day of Month 2",
+                "activate": True,
+                "day": 0,
+                "occurrence": 4
+            },
+            {
+                "dom_index": 5,
+                "dom_name": "Day of Month 3",
+                "activate": False,
+                "day": 0,
+                "occurrence": 4
+            }
+        ]
+    }
+    return make_put_request(ip_address, "set_all_dom", data)
+
+def set_dom(ip_address, dom_index):
+    endpoint = "set_dom"
+    data = { 
+        "activate": False, 
+        "day": 1, 
+        "occurrence": 1 
+    }
+    dom_info = make_set_request_with_dom_query(ip_address, endpoint, dom_index, data)
+    return dom_info
+
+def dom_add_bell(ip_address, bell_index, hour, minute):
+    data = {
+        "bell_index": bell_index,
+        "hour": hour,
+        "minute": minute
+    }
+    return make_put_request(ip_address, "dom_add_bell", data)
+
+def dom_edit_bell(ip_address, bell_id, bell_index, hour, minute):
+    data = {
+        "bell_id": bell_id,
+        "bell_index": bell_index,
+        "hour": hour,
+        "minute": minute
+    }
+    return make_put_request(ip_address, "dom_edit_bell", data)
+
+def dom_delete_bell(ip_address, bell_id):
+    data = {
+        "bell_id": bell_id
+    }
+    return make_put_request(ip_address, "dom_delete_bell", data)
 
 def set_dop(ip_address, dop_name, activate, day, month, year):
     data = {
@@ -354,41 +397,48 @@ def send_firmware(ip_address, firmware_path):
 
 if __name__ == "__main__":
 
-    ip = "192.168.0.105"  # Replace with your ESP32's IP address
+    ip = "192.168.0.123"  # Replace with your ESP32's IP address
     
     # get_response = get_ring_bell(ip)
     # get_response = get_repeat_bell(ip)
-    # get_response = get_dom(ip, 3)
+    get_response = get_dom(ip, 2)
     # get_response = get_dop(ip)
     # get_response = view_bells(ip)
     # get_response = dop_view_bell(ip)
-    # if get_response:
-    #     print("GET Response from server:")
-    #     print(get_response)
-    # else:
-    #     print("Failed to get")
+    # get_response = dom_view_bell(ip)
+    # get_response = get_all_dom(ip)
+    if get_response:
+        print("GET Response from server:")
+        print(get_response)
+    else:
+        print("Failed to get")
 
 
     # put_response = set_season(ip, 0)
     # put_response = set_auto_sleep(ip, False)
+    #put_response = set_auto_bell(ip, False)
     # put_response = set_select_bell(ip, 8, True)
     # put_response = set_ring_bell(ip, 0, True, False)
     # put_response = set_repeat_bell(ip, False, 1, 1, 3)
     # put_response = add_bell(ip, 3, 0, 12, 0, [False,True,False,False,False,False,True])
     # put_response = send_firmware(ip, "pulsator-firmware.bin")
     # put_response = set_dom(ip, 1)
-    #put_response = set_all_dom(ip)
-    #put_response = edit_bell(ip, 2, 2, 1, 8, 40, [True, True, False, False, False, True, False])
-    # put_response = delete_bell(ip, 2)
-    #put_response = set_dop(ip, "Day of Program", False, 25, 3, 35)
-    #put_response = dop_add_bell(ip, 3, 13, 50)
-    #put_response = dop_edit_bell(ip, 0, 0, 4, 55)
-    put_response = dop_delete_bell(ip, 3)
-    if put_response:
-        print("PUT Response from server (Set):")
-        print(put_response)
-    else:
-        print("Failed to set")
+   
+    # #put_response = edit_bell(ip, 2, 2, 1, 8, 40, [True, True, False, False, False, True, False])
+    # # put_response = delete_bell(ip, 2)
+    # #put_response = set_dop(ip, "Day of Program", False, 25, 3, 35)
+    # #put_response = dop_add_bell(ip, 3, 13, 50)
+    # #put_response = dop_edit_bell(ip, 0, 0, 4, 55)
+    # #put_response = dop_delete_bell(ip, 3)
+    # #put_response = dom_add_bell(ip, 3, 11, 16)
+    # #put_response = dom_edit_bell(ip, 3, 3, 0, 0)
+    # # put_response = dom_delete_bell(ip, 1)
+    # # put_response = set_all_dom(ip)
+    # if put_response:
+    #     print("PUT Response from server (Set):")
+    #     print(put_response)
+    # else:
+    #     print("Failed to set")
 
 
 
