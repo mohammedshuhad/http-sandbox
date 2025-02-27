@@ -111,10 +111,6 @@ def make_put_request(ip_address, endpoint, data):
         return None
 
 def set_season(ip_address, season_index):
-    if season_index < 0 or season_index > 4:
-        print("Enter valid season")
-        return None 
-        
     data = {
         "season_index": season_index
     }
@@ -291,12 +287,12 @@ def set_all_dom(ip_address):
     }
     return make_put_request(ip_address, "set_all_dom", data)
 
-def set_dom(ip_address, dom_index):
+def set_dom(ip_address, dom_index, day, occurence):
     endpoint = "set_dom"
     data = { 
-        "activate": False, 
-        "day": 1, 
-        "occurrence": 1 
+        "activate": True, 
+        "day": day, 
+        "occurrence": occurence 
     }
     dom_info = make_set_request_with_dom_query(ip_address, endpoint, dom_index, data)
     return dom_info
@@ -395,26 +391,107 @@ def send_firmware(ip_address, firmware_path):
     except Exception as e:
         print(f"Error occurred: {str(e)}")
 
+def test_all_get(ip):
+    methods = [get_ring_bell, get_repeat_bell, view_bells, get_all_dom, dom_view_bell, get_dop, dop_view_bell]
+    failed_methods = []
+
+    for method in methods:
+        response = method(ip)
+        if response:
+            print("PUT Response from server (Set):")
+            print(response)
+        else:
+            print("Failed to set")
+            failed_methods.append(method.__name__)
+
+    if failed_methods:
+        print("The following methods failed:", failed_methods)
+    else:
+        print("All methods succeeded.")
+
+def test_all_put(ip):
+    test_cases = [
+        (set_season, [ip, 0]),
+        (set_auto_sleep, [ip, False]),
+        (set_auto_bell, [ip, False]),
+        (set_select_bell, [ip, 8, True]),
+        (set_ring_bell, [ip, 0, True, False]),
+        (set_repeat_bell, [ip, False, 1, 1, 3]),
+        (add_bell, [ip, 3, 0, 12, 0, [False,True,False,False,False,False,True]]),
+        (edit_bell, [ip, 2, 2, 1, 8, 40, [True, True, False, False, False, True, False]]),
+        (delete_bell, [ip, 2]),
+        (set_dop, [ip, "Day of Program", False, 25, 3, 35]),
+        (dop_add_bell, [ip, 3, 13, 50]),
+        (dop_edit_bell, [ip, 0, 0, 4, 55]),
+        (dop_delete_bell, [ip, 3]),
+        (dom_add_bell, [ip, 3, 11, 16]),
+        (dom_edit_bell, [ip, 3, 3, 0, 0]),
+        (dom_delete_bell, [ip, 1]),
+        (set_all_dom, [ip])
+    ]
+
+    results = {
+        'success': [],
+        'failed': []
+    }
+
+    for func, args in test_cases:
+        response = func(*args)
+        if response:
+            results['success'].append(func.__name__)
+            print(f"✓ {func.__name__} succeeded")
+        else:
+            results['failed'].append(func.__name__)
+            print(f"✗ {func.__name__} failed")
+
+    # Print summary
+    print("\nTest Summary:")
+    print(f"Successful calls: {len(results['success'])}")
+    print(f"Failed calls: {len(results['failed'])}")
+    
+    if results['failed']:
+        print("\nFailed calls details:")
+        for func_name in results['failed']:
+            print(f"- {func_name}")
+            
+    return results
+
 if __name__ == "__main__":
 
-    ip = "192.168.0.123"  # Replace with your ESP32's IP address
+    ip = "192.168.68.64"  # Replace with your ESP32's IP address
+
+    # test_all_get(ip)
+    test_all_put(ip)
     
     # get_response = get_ring_bell(ip)
     # get_response = get_repeat_bell(ip)
-    get_response = get_dom(ip, 2)
     # get_response = get_dop(ip)
     # get_response = view_bells(ip)
     # get_response = dop_view_bell(ip)
     # get_response = dom_view_bell(ip)
     # get_response = get_all_dom(ip)
-    if get_response:
-        print("GET Response from server:")
-        print(get_response)
-    else:
-        print("Failed to get")
+    # for i in range(6):
+    #     get_response = get_dom(ip, i)
+    #     if get_response:
+    #         print(f"GET Response from server for dom_index {i}:")
+    #         print(get_response)
+    #     else:
+    #         print(f"Failed to get for dom_index {i}")
+
+    # Failed calls details:
+    # - set_season
+    # - set_select_bell
+    # - set_repeat_bell
+    # - delete_bell
+    # - dop_add_bell
+    # - dop_edit_bell
+    # - dop_delete_bell
+    # - dom_add_bell
+    # - dom_edit_bell
+    # - dom_delete_bell
 
 
-    # put_response = set_season(ip, 0)
+    # put_response = set_season(ip, 1)
     # put_response = set_auto_sleep(ip, False)
     #put_response = set_auto_bell(ip, False)
     # put_response = set_select_bell(ip, 8, True)
@@ -422,7 +499,6 @@ if __name__ == "__main__":
     # put_response = set_repeat_bell(ip, False, 1, 1, 3)
     # put_response = add_bell(ip, 3, 0, 12, 0, [False,True,False,False,False,False,True])
     # put_response = send_firmware(ip, "pulsator-firmware.bin")
-    # put_response = set_dom(ip, 1)
    
     # #put_response = edit_bell(ip, 2, 2, 1, 8, 40, [True, True, False, False, False, True, False])
     # # put_response = delete_bell(ip, 2)
