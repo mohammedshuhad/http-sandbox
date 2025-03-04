@@ -62,7 +62,8 @@ def get_dom(ip_address, dom_index):
 
 def dom_view_bell(ip_address):
     endpoint = "dom_view_bell"
-    dom_info = make_get_request(ip_address, endpoint)
+    dom_index = 0
+    dom_info = make_get_request_with_dom_query(ip_address, endpoint, dom_index)
     return dom_info
 
 def get_dop(ip_address):
@@ -458,25 +459,23 @@ def test_all_put(ip):
 
 if __name__ == "__main__":
 
-    ip = "192.168.68.64"  # Replace with your ESP32's IP address
+    ip = "192.168.0.182"  # Replace with your ESP32's IP address
 
     # test_all_get(ip)
-    test_all_put(ip)
+    # test_all_put(ip)
     
     # get_response = get_ring_bell(ip)
     # get_response = get_repeat_bell(ip)
     # get_response = get_dop(ip)
     # get_response = view_bells(ip)
     # get_response = dop_view_bell(ip)
-    # get_response = dom_view_bell(ip)
+    get_response = dom_view_bell(ip)
     # get_response = get_all_dom(ip)
-    # for i in range(6):
-    #     get_response = get_dom(ip, i)
-    #     if get_response:
-    #         print(f"GET Response from server for dom_index {i}:")
-    #         print(get_response)
-    #     else:
-    #         print(f"Failed to get for dom_index {i}")
+
+    if get_response:
+        print(get_response)
+    else:
+        print(f"Failed to get for dom_index")
 
     # Failed calls details:
     # - set_season
