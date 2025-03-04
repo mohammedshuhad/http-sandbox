@@ -1,0 +1,312 @@
+{
+    "data": [
+        {
+            "name": "New Koootamani",
+            "bells": [
+                {
+                    "pattern": [
+                        {"time": 30000, "state": true},
+                        {"time": 1000, "state": false}
+                    ],
+                    "repeat": 0
+                },
+                {
+                    "pattern": [
+                        {"time": 30000, "state": true},
+                        {"time": 1000, "state": false}
+                    ],
+                    "repeat": 0
+                },
+                {
+                    "pattern": [
+                        {"time": 30000, "state": true},
+                        {"time": 1000, "state": false}
+                    ],
+                    "repeat": 0
+                },
+                {
+                    "pattern": [
+                        {"time": 30000, "state": true},
+                        {"time": 1000, "state": false}
+                    ],
+                    "repeat": 0
+                },
+                {
+                    "pattern": [
+                        {"time": 30000, "state": true},
+                        {"time": 1000, "state": false}
+                    ],
+                    "repeat": 0
+                },
+                {
+                    "pattern": [
+                        {"time": 30000, "state": true},
+                        {"time": 1000, "state": false}
+                    ],
+                    "repeat": 0
+                },
+                {
+                    "pattern": [
+                        {"time": 30000, "state": true},
+                        {"time": 1000, "state": false}
+                    ],
+                    "repeat": 0
+                },
+                {
+                    "pattern": [
+                        {"time": 30000, "state": true},
+                        {"time": 1000, "state": false}
+                    ],
+                    "repeat": 0
+                }
+            ]
+        },
+        {
+            "name": "MaranaMani",
+            "bells": [
+                {
+                    "pattern": [
+                        {"time": 2000, "state": true},
+                        {"time": 5000, "state": false}
+                    ],
+                    "repeat": 5
+                },
+                {
+                    "pattern": [
+                        {"time": 2000, "state": true},
+                        {"time": 5000, "state": false}
+                    ],
+                    "repeat": 5
+                },
+                {
+                    "pattern": [
+                        {"time": 2000, "state": true},
+                        {"time": 5000, "state": false}
+                    ],
+                    "repeat": 5
+                },
+                {
+                    "pattern": [
+                        {"time": 2000, "state": true},
+                        {"time": 5000, "state": false}
+                    ],
+                    "repeat": 5
+                },
+                {
+                    "pattern": [
+                        {"time": 2000, "state": true},
+                        {"time": 5000, "state": false}
+                    ],
+                    "repeat": 5
+                },
+                {
+                    "pattern": [
+                        {"time": 2000, "state": true},
+                        {"time": 5000, "state": false}
+                    ],
+                    "repeat": 5
+                },
+                {
+                    "pattern": [
+                        {"time": 2000, "state": true},
+                        {"time": 5000, "state": false}
+                    ],
+                    "repeat": 5
+                },
+                {
+                    "pattern": [
+                        {"time": 2000, "state": true},
+                        {"time": 5000, "state": false}
+                    ],
+                    "repeat": 5
+                }
+            ]
+        },
+        {
+            "name": "KurishuMani",
+            "bells": [
+                {
+                    "pattern": [
+                        {"time": 1000, "state": true},
+                        {"time": 3000, "state": false},
+                        {"time": 1000, "state": true},
+                        {"time": 3000, "state": false},
+                        {"time": 1000, "state": true},
+                        {"time": 5000, "state": false}
+                    ],
+                    "repeat": 0
+                },
+                {
+                    "pattern": [
+                        {"time": 1000, "state": true},
+                        {"time": 3000, "state": false},
+                        {"time": 1000, "state": true},
+                        {"time": 3000, "state": false},
+                        {"time": 1000, "state": true},
+                        {"time": 5000, "state": false}
+                    ],
+                    "repeat": 0
+                },
+                {
+                    "pattern": [
+                        {"time": 1000, "state": true},
+                        {"time": 3000, "state": false},
+                        {"time": 1000, "state": true},
+                        {"time": 3000, "state": false},
+                        {"time": 1000, "state": true},
+                        {"time": 5000, "state": false}
+                    ],
+                    "repeat": 0
+                },
+                {
+                    "pattern": [
+                        {"time": 1000, "state": true},
+                        {"time": 3000, "state": false},
+                        {"time": 1000, "state": true},
+                        {"time": 3000, "state": false},
+                        {"time": 1000, "state": true},
+                        {"time": 5000, "state": false}
+                    ],
+                    "repeat": 0
+                },
+                {
+                    "pattern": [
+                        {"time": 1000, "state": true},
+                        {"time": 3000, "state": false},
+                        {"time": 1000, "state": true},
+                        {"time": 3000, "state": false},
+                        {"time": 1000, "state": true},
+                        {"time": 5000, "state": false}
+                    ],
+                    "repeat": 0
+                },
+                {
+                    "pattern": [
+                        {"time": 1000, "state": true},
+                        {"time": 3000, "state": false},
+                        {"time": 1000, "state": true},
+                        {"time": 3000, "state": false},
+                        {"time": 1000, "state": true},
+                        {"time": 5000, "state": false}
+                    ],
+                    "repeat": 0
+                },
+                {
+                    "pattern": [
+                        {"time": 1000, "state": true},
+                        {"time": 3000, "state": false},
+                        {"time": 1000, "state": true},
+                        {"time": 3000, "state": false},
+                        {"time": 1000, "state": true},
+                        {"time": 5000, "state": false}
+                    ],
+                    "repeat": 0
+                },
+                {
+                    "pattern": [
+                        {"time": 1000, "state": true},
+                        {"time": 3000, "state": false},
+                        {"time": 1000, "state": true},
+                        {"time": 3000, "state": false},
+                        {"time": 1000, "state": true},
+                        {"time": 5000, "state": false}
+                    ],
+                    "repeat": 0
+                }
+            ]
+        },
+        {
+            "name": "Http Song",
+            "bells": [
+                {
+                    "pattern": [
+                        {"time": 1000, "state": true},
+                        {"time": 1000, "state": false},
+                        {"time": 1000, "state": true},
+                        {"time": 1000, "state": false},
+                        {"time": 1000, "state": true},
+                        {"time": 1000, "state": false}
+                    ],
+                    "repeat": 3
+                },
+                {
+                    "pattern": [
+                        {"time": 1000, "state": true},
+                        {"time": 1000, "state": false},
+                        {"time": 1000, "state": true},
+                        {"time": 1000, "state": false},
+                        {"time": 1000, "state": true},
+                        {"time": 1000, "state": false}
+                    ],
+                    "repeat": 3
+                },
+                {
+                    "pattern": [
+                        {"time": 1000, "state": true},
+                        {"time": 1000, "state": false},
+                        {"time": 1000, "state": true},
+                        {"time": 1000, "state": false},
+                        {"time": 1000, "state": true},
+                        {"time": 1000, "state": false}
+                    ],
+                    "repeat": 3
+                },
+                {
+                    "pattern": [
+                        {"time": 1000, "state": true},
+                        {"time": 1000, "state": false},
+                        {"time": 1000, "state": true},
+                        {"time": 1000, "state": false},
+                        {"time": 1000, "state": true},
+                        {"time": 1000, "state": false}
+                    ],
+                    "repeat": 3
+                },
+                {
+                    "pattern": [
+                        {"time": 1000, "state": true},
+                        {"time": 1000, "state": false},
+                        {"time": 1000, "state": true},
+                        {"time": 1000, "state": false},
+                        {"time": 1000, "state": true},
+                        {"time": 1000, "state": false}
+                    ],
+                    "repeat": 3
+                },
+                {
+                    "pattern": [
+                        {"time": 1000, "state": true},
+                        {"time": 1000, "state": false},
+                        {"time": 1000, "state": true},
+                        {"time": 1000, "state": false},
+                        {"time": 1000, "state": true},
+                        {"time": 1000, "state": false}
+                    ],
+                    "repeat": 3
+                },
+                {
+                    "pattern": [
+                        {"time": 1000, "state": true},
+                        {"time": 1000, "state": false},
+                        {"time": 1000, "state": true},
+                        {"time": 1000, "state": false},
+                        {"time": 1000, "state": true},
+                        {"time": 1000, "state": false}
+                    ],
+                    "repeat": 3
+                },
+                {
+                    "pattern": [
+                        {"time": 1000, "state": true},
+                        {"time": 1000, "state": false},
+                        {"time": 1000, "state": true},
+                        {"time": 1000, "state": false},
+                        {"time": 1000, "state": true},
+                        {"time": 1000, "state": false}
+                    ],
+                    "repeat": 3
+                }
+            ]
+        }
+    ]
+}

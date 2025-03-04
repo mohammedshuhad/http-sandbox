@@ -1,9 +1,11 @@
 import requests
 import base64
+import json
+
+
 credentials = "admin:password123"
 encoded = base64.b64encode(credentials.encode()).decode()
 
-####                                              GET                                                  ####
 
 def make_get_request_with_dom_query(ip_address, endpoint, query_param):
     url = f"http://{ip_address}:80/{endpoint}?dom_index={query_param}"
@@ -392,6 +394,23 @@ def send_firmware(ip_address, firmware_path):
     except Exception as e:
         print(f"Error occurred: {str(e)}")
 
+def load_bell_patterns(json_file_path):
+    try:
+        with open(json_file_path, 'r') as file:
+            return json.load(file)
+    except FileNotFoundError:
+        print(f"Error: Could not find {json_file_path}")
+        return None
+    except json.JSONDecodeError:
+        print(f"Error: Invalid JSON format in {json_file_path}")
+        return None
+
+def set_bell_patterns(ip_address):
+    patterns = load_bell_patterns('bellpattern.json')
+    if patterns:
+        return make_put_request(ip_address, "set_patterns", patterns)
+    return None
+
 def test_all_get(ip):
     methods = [get_ring_bell, get_repeat_bell, view_bells, get_all_dom, dom_view_bell, get_dop, dop_view_bell]
     failed_methods = []
@@ -428,7 +447,8 @@ def test_all_put(ip):
         (dom_add_bell, [ip, 3, 11, 16]),
         (dom_edit_bell, [ip, 3, 3, 0, 0]),
         (dom_delete_bell, [ip, 1]),
-        (set_all_dom, [ip])
+        (set_all_dom, [ip]),
+        (set_bell_patterns, [ip])
     ]
 
     results = {
@@ -469,391 +489,37 @@ if __name__ == "__main__":
     # get_response = get_dop(ip)
     # get_response = view_bells(ip)
     # get_response = dop_view_bell(ip)
-    get_response = dom_view_bell(ip)
+    # get_response = dom_view_bell(ip)
     # get_response = get_all_dom(ip)
 
-    if get_response:
-        print(get_response)
-    else:
-        print(f"Failed to get for dom_index")
-
-    # Failed calls details:
-    # - set_season
-    # - set_select_bell
-    # - set_repeat_bell
-    # - delete_bell
-    # - dop_add_bell
-    # - dop_edit_bell
-    # - dop_delete_bell
-    # - dom_add_bell
-    # - dom_edit_bell
-    # - dom_delete_bell
+    # if get_response:
+    #     print(get_response)
+    # else:
+    #     print(f"Failed to get for dom_index")
 
 
     # put_response = set_season(ip, 1)
     # put_response = set_auto_sleep(ip, False)
-    #put_response = set_auto_bell(ip, False)
+    # put_response = set_auto_bell(ip, False)
     # put_response = set_select_bell(ip, 8, True)
     # put_response = set_ring_bell(ip, 0, True, False)
     # put_response = set_repeat_bell(ip, False, 1, 1, 3)
     # put_response = add_bell(ip, 3, 0, 12, 0, [False,True,False,False,False,False,True])
-    # put_response = send_firmware(ip, "pulsator-firmware.bin")
-   
-    # #put_response = edit_bell(ip, 2, 2, 1, 8, 40, [True, True, False, False, False, True, False])
-    # # put_response = delete_bell(ip, 2)
-    # #put_response = set_dop(ip, "Day of Program", False, 25, 3, 35)
-    # #put_response = dop_add_bell(ip, 3, 13, 50)
-    # #put_response = dop_edit_bell(ip, 0, 0, 4, 55)
-    # #put_response = dop_delete_bell(ip, 3)
-    # #put_response = dom_add_bell(ip, 3, 11, 16)
-    # #put_response = dom_edit_bell(ip, 3, 3, 0, 0)
-    # # put_response = dom_delete_bell(ip, 1)
-    # # put_response = set_all_dom(ip)
-    # if put_response:
-    #     print("PUT Response from server (Set):")
-    #     print(put_response)
-    # else:
-    #     print("Failed to set")
+    put_response = send_firmware(ip, "pulsator-firmware.bin")
+    # put_response = edit_bell(ip, 2, 2, 1, 8, 40, [True, True, False, False, False, True, False])
+    # put_response = delete_bell(ip, 2)
+    # put_response = set_dop(ip, "Day of Program", False, 25, 3, 35)
+    # put_response = dop_add_bell(ip, 3, 13, 50)
+    # put_response = dop_edit_bell(ip, 0, 0, 4, 55)
+    # put_response = dop_delete_bell(ip, 3)
+    # put_response = dom_add_bell(ip, 3, 11, 16)
+    # put_response = dom_edit_bell(ip, 3, 3, 0, 0)
+    # put_response = dom_delete_bell(ip, 1)
+    # put_response = set_all_dom(ip)
+    # put_response = set_bell_patterns(ip)
 
-
-
-
-
-
-
-
-
-    # data = {
-    #     "hours":    12,
-    #     "minutes":  36,
-    #     "seconds":  23,
-    #     "day":      22,
-    #     "month":    0,
-    #     "year":     24,
-    # }
-    # put_response = make_put_request(ip, data)
-    # if put_response:
-    #     print("PUT Response from server:")
-    #     print(put_response)
-    # else:
-    #     print("Failed to send PUT request to the server.")
-    
-    # # Example PUT request
-    # data = {
-    #     "data": [
-    #         {
-    #             "name": "New Kootamani",
-    #             "bells": [
-    #                 {
-    #                     "pattern": [
-    #                         {"time": 30000, "state": True},
-    #                         {"time": 1000, "state": False}
-    #                     ],
-    #                     "repeat": 0
-    #                 },
-    #                 {
-    #                     "pattern": [
-    #                         {"time": 30000, "state": True},
-    #                         {"time": 1000, "state": False}
-    #                     ],
-    #                     "repeat": 0
-    #                 },
-    #                 {
-    #                     "pattern": [
-    #                         {"time": 30000, "state": True},
-    #                         {"time": 1000, "state": False}
-    #                     ],
-    #                     "repeat": 0
-    #                 },
-    #                 {
-    #                     "pattern": [
-    #                         {"time": 30000, "state": True},
-    #                         {"time": 1000, "state": False}
-    #                     ],
-    #                     "repeat": 0
-    #                 },
-    #                 {
-    #                     "pattern": [
-    #                         {"time": 30000, "state": True},
-    #                         {"time": 1000, "state": False}
-    #                     ],
-    #                     "repeat": 0
-    #                 },
-    #                 {
-    #                     "pattern": [
-    #                         {"time": 30000, "state": True},
-    #                         {"time": 1000, "state": False}
-    #                     ],
-    #                     "repeat": 0
-    #                 },
-    #                 {
-    #                     "pattern": [
-    #                         {"time": 30000, "state": True},
-    #                         {"time": 1000, "state": False}
-    #                     ],
-    #                     "repeat": 0
-    #                 },
-    #                 {
-    #                     "pattern": [
-    #                         {"time": 30000, "state": True},
-    #                         {"time": 1000, "state": False}
-    #                     ],
-    #                     "repeat": 0
-    #                 }
-    #             ]
-    #         },
-    #         {
-    #             "name": "MaranaMani",
-    #             "bells": [
-    #                 {
-    #                     "pattern": [
-    #                         {"time": 2000, "state": True},
-    #                         {"time": 5000, "state": False}
-    #                     ],
-    #                     "repeat": 5
-    #                 },
-    #                 {
-    #                     "pattern": [
-    #                         {"time": 2000, "state": True},
-    #                         {"time": 5000, "state": False}
-    #                     ],
-    #                     "repeat": 5
-    #                 },
-    #                 {
-    #                     "pattern": [
-    #                         {"time": 2000, "state": True},
-    #                         {"time": 5000, "state": False}
-    #                     ],
-    #                     "repeat": 5
-    #                 },
-    #                 {
-    #                     "pattern": [
-    #                         {"time": 2000, "state": True},
-    #                         {"time": 5000, "state": False}
-    #                     ],
-    #                     "repeat": 5
-    #                 },
-    #                 {
-    #                     "pattern": [
-    #                         {"time": 2000, "state": True},
-    #                         {"time": 5000, "state": False}
-    #                     ],
-    #                     "repeat": 5
-    #                 },
-    #                 {
-    #                     "pattern": [
-    #                         {"time": 2000, "state": True},
-    #                         {"time": 5000, "state": False}
-    #                     ],
-    #                     "repeat": 5
-    #                 },
-    #                 {
-    #                     "pattern": [
-    #                         {"time": 2000, "state": True},
-    #                         {"time": 5000, "state": False}
-    #                     ],
-    #                     "repeat": 5
-    #                 },
-    #                 {
-    #                     "pattern": [
-    #                         {"time": 2000, "state": True},
-    #                         {"time": 5000, "state": False}
-    #                     ],
-    #                     "repeat": 5
-    #                 }
-    #             ]
-    #         },
-    #         {
-    #             "name": "KurishuMani",
-    #             "bells": [
-    #                 {
-    #                     "pattern": [
-    #                         {"time": 1000, "state": True},
-    #                         {"time": 3000, "state": False},
-    #                         {"time": 1000, "state": True},
-    #                         {"time": 3000, "state": False},
-    #                         {"time": 1000, "state": True},
-    #                         {"time": 5000, "state": False}
-    #                     ],
-    #                     "repeat": 0
-    #                 },
-    #                 {
-    #                     "pattern": [
-    #                         {"time": 1000, "state": True},
-    #                         {"time": 3000, "state": False},
-    #                         {"time": 1000, "state": True},
-    #                         {"time": 3000, "state": False},
-    #                         {"time": 1000, "state": True},
-    #                         {"time": 5000, "state": False}
-    #                     ],
-    #                     "repeat": 0
-    #                 },
-    #                 {
-    #                     "pattern": [
-    #                         {"time": 1000, "state": True},
-    #                         {"time": 3000, "state": False},
-    #                         {"time": 1000, "state": True},
-    #                         {"time": 3000, "state": False},
-    #                         {"time": 1000, "state": True},
-    #                         {"time": 5000, "state": False}
-    #                     ],
-    #                     "repeat": 0
-    #                 },
-    #                 {
-    #                     "pattern": [
-    #                         {"time": 1000, "state": True},
-    #                         {"time": 3000, "state": False},
-    #                         {"time": 1000, "state": True},
-    #                         {"time": 3000, "state": False},
-    #                         {"time": 1000, "state": True},
-    #                         {"time": 5000, "state": False}
-    #                     ],
-    #                     "repeat": 0
-    #                 },
-    #                 {
-    #                     "pattern": [
-    #                         {"time": 1000, "state": True},
-    #                         {"time": 3000, "state": False},
-    #                         {"time": 1000, "state": True},
-    #                         {"time": 3000, "state": False},
-    #                         {"time": 1000, "state": True},
-    #                         {"time": 5000, "state": False}
-    #                     ],
-    #                     "repeat": 0
-    #                 },
-    #                 {
-    #                     "pattern": [
-    #                         {"time": 1000, "state": True},
-    #                         {"time": 3000, "state": False},
-    #                         {"time": 1000, "state": True},
-    #                         {"time": 3000, "state": False},
-    #                         {"time": 1000, "state": True},
-    #                         {"time": 5000, "state": False}
-    #                     ],
-    #                     "repeat": 0
-    #                 },
-    #                 {
-    #                     "pattern": [
-    #                         {"time": 1000, "state": True},
-    #                         {"time": 3000, "state": False},
-    #                         {"time": 1000, "state": True},
-    #                         {"time": 3000, "state": False},
-    #                         {"time": 1000, "state": True},
-    #                         {"time": 5000, "state": False}
-    #                     ],
-    #                     "repeat": 0
-    #                 },
-    #                 {
-    #                     "pattern": [
-    #                         {"time": 1000, "state": True},
-    #                         {"time": 3000, "state": False},
-    #                         {"time": 1000, "state": True},
-    #                         {"time": 3000, "state": False},
-    #                         {"time": 1000, "state": True},
-    #                         {"time": 5000, "state": False}
-    #                     ],
-    #                     "repeat": 0
-    #                 }
-    #             ]
-    #         },
-    #         {
-    #             "name": "Http Song",
-    #             "bells": [
-    #                 {
-    #                     "pattern": [
-    #                         {"time": 1000, "state": True},
-    #                         {"time": 1000, "state": False},
-    #                         {"time": 1000, "state": True},
-    #                         {"time": 1000, "state": False},
-    #                         {"time": 1000, "state": True},
-    #                         {"time": 1000, "state": False}
-    #                     ],
-    #                     "repeat": 3
-    #                 },
-    #                 {
-    #                     "pattern": [
-    #                         {"time": 1000, "state": True},
-    #                         {"time": 1000, "state": False},
-    #                         {"time": 1000, "state": True},
-    #                         {"time": 1000, "state": False},
-    #                         {"time": 1000, "state": True},
-    #                         {"time": 1000, "state": False}
-    #                     ],
-    #                     "repeat": 3
-    #                 },
-    #                 {
-    #                     "pattern": [
-    #                         {"time": 1000, "state": True},
-    #                         {"time": 1000, "state": False},
-    #                         {"time": 1000, "state": True},
-    #                         {"time": 1000, "state": False},
-    #                         {"time": 1000, "state": True},
-    #                         {"time": 1000, "state": False}
-    #                     ],
-    #                     "repeat": 3
-    #                 },
-    #                 {
-    #                     "pattern": [
-    #                         {"time": 1000, "state": True},
-    #                         {"time": 1000, "state": False},
-    #                         {"time": 1000, "state": True},
-    #                         {"time": 1000, "state": False},
-    #                         {"time": 1000, "state": True},
-    #                         {"time": 1000, "state": False}
-    #                     ],
-    #                     "repeat": 3
-    #                 },
-    #                 {
-    #                     "pattern": [
-    #                         {"time": 1000, "state": True},
-    #                         {"time": 1000, "state": False},
-    #                         {"time": 1000, "state": True},
-    #                         {"time": 1000, "state": False},
-    #                         {"time": 1000, "state": True},
-    #                         {"time": 1000, "state": False}
-    #                     ],
-    #                     "repeat": 3
-    #                 },
-    #                 {
-    #                     "pattern": [
-    #                         {"time": 1000, "state": True},
-    #                         {"time": 1000, "state": False},
-    #                         {"time": 1000, "state": True},
-    #                         {"time": 1000, "state": False},
-    #                         {"time": 1000, "state": True},
-    #                         {"time": 1000, "state": False}
-    #                     ],
-    #                     "repeat": 3
-    #                 },
-    #                 {
-    #                     "pattern": [
-    #                         {"time": 1000, "state": True},
-    #                         {"time": 1000, "state": False},
-    #                         {"time": 1000, "state": True},
-    #                         {"time": 1000, "state": False},
-    #                         {"time": 1000, "state": True},
-    #                         {"time": 1000, "state": False}
-    #                     ],
-    #                     "repeat": 3
-    #                 },
-    #                 {
-    #                     "pattern": [
-    #                         {"time": 1000, "state": True},
-    #                         {"time": 1000, "state": False},
-    #                         {"time": 1000, "state": True},
-    #                         {"time": 1000, "state": False},
-    #                         {"time": 1000, "state": True},
-    #                         {"time": 1000, "state": False}
-    #                     ],
-    #                     "repeat": 3
-    #                 }
-    #             ]
-    #         }
-    #     ]
-    # }
-    # put_response = make_put_request(ip, data)
-    # if put_response:
-    #     print("PUT Response from server:")
-    #     print(put_response)
-    # else:
-    #     print("Failed to send PUT request to the server.")
+    if put_response:
+        print("PUT Response from server (Set):")
+        print(put_response)
+    else:
+        print("Failed to set")
