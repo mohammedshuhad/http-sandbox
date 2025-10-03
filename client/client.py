@@ -200,22 +200,44 @@ def set_repeat_bell(ip_address, repeat, interval, up_to_time, bell_index ):
     return make_put_request(ip_address,"set_repeat_bell", data)
 
 def add_bell(ip_address, bell_index_arr, repeat_count_arr, season_index, hour, minute, schedule, dom_day, dom_occurence, dop_day, dop_month, dop_year, schedule_type):
-    # TODO : Muhammed - Check validity of all variables
-    # if bell_index < 0 or bell_index > 3:
-    #     print("Bell index must be in (0-3)")
-    #     return None
-    # if season_index < 0 or season_index > 4:
-    #     print("Enter valid season")
-    #     return None 
-    # if hour < 0 or hour > 23:
-    #     print("Enter valid hour")
-    #     return None
-    # if minute < 0 or minute > 59:
-    #     print("Enter valid minute")
-    #     return None
-    # if not isinstance(schedule, list) or not all(isinstance(i, bool) for i in schedule):
-    #     print("Invalid schedule format. It should be a list of booleans.")
-    #     return None
+    # TODO : Muhammed - Check validity of all variables :: C
+    if bell_index < 0 or bell_index > 3:
+        print("Bell index must be in (0-3)")
+        return None
+    if repeat_count_arr < 0 or repeat_count_arr > 3:
+        print("Repeat index must be in (0-3)")
+        return None
+    if season_index < 0 or season_index > 4:
+        print("Invalid season !!\n Enter SUMMER = 0, WINTER = 1,CHRISTMAS = 2,EASTER = 3,EXAM = 4,")
+        return None 
+    if hour < 0 or hour > 23:
+        print("Enter valid hour")
+        return None
+    if minute < 0 or minute > 59:
+        print("Enter valid minute")
+        return None
+    if not isinstance(schedule, list) or not all(isinstance(i, bool) for i in schedule):
+        print("Invalid schedule format. It should be a list of booleans.")
+        return None
+    if dom_day < 0 or dom_day > 6:
+        print("Enter valid dom day")
+        return None
+    if dom_occurence < 1 or dom_occurence >5:
+        print("Enter valid dom occurence")
+        return None
+    if dop_day < 0 or dop_day >1:
+        print("Enter valid dop day")
+        return None
+    if dop_month < 1 or dop_month > 12:
+        print("Enter valid dop month")
+        return None
+    if dop_year < 2000 or dop_month >2100:
+        print("Enter valid dop year")
+        return None
+    if schedule_type < 0 or schedule_type > 2:
+        print("Enter valid schedule type ")
+        return None
+    
     data = {
         "bell_index_arr": bell_index_arr,
         "repeat_count" : repeat_count_arr,
@@ -364,9 +386,6 @@ def dop_delete_bell(ip_address, bell_id):
     }
     return make_put_request(ip_address, "dop_delete_bell", data)
 
-
-
-
 def send_firmware(ip_address, firmware_path):
     url = f"http://{ip_address}:80/set_ota_bin"
 
@@ -495,7 +514,8 @@ if __name__ == "__main__":
     # get_response = get_ring_bell(ip)
     # get_response = get_repeat_bell(ip)
     # get_response = get_dop(ip)
-    # get_response = view_bells(ip)
+    get_response = view_bells(ip)
+
     # get_response = dop_view_bell(ip)
     # get_response = dom_view_bell(ip)
     # get_response = get_all_dom(ip)
@@ -512,7 +532,7 @@ if __name__ == "__main__":
     # put_response = set_select_bell(ip, 8, True)
     # put_response = set_ring_bell(ip, 0, True, False)
     # put_response = set_repeat_bell(ip, False, 1, 1, 3)
-    put_response = add_bell(ip, [3, 1, 1], [1, 0, 0], 0, 15, 0, [False,True,False,False,False,False,True], 2, 2, 12, 9, 25, 0)
+    #put_response = add_bell(ip, [3, 1, 1], [1, 0, 0], 0, 13, 0, [False,True,False,False,False,False,True], 2, 2, 12, 9, 25, 0)
     # put_response = send_firmware(ip, "pulsator-firmware.bin")
     # put_response = edit_bell(ip, 2, 2, 1, 8, 40, [True, True, False, False, False, True, False])
     # put_response = delete_bell(ip, 2)
