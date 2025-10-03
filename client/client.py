@@ -263,7 +263,22 @@ def edit_bell(ip_address, bell_id, bell_index, season_index, hour, minute, sched
         "schedule": schedule
     }
     return make_put_request(ip_address, "edit_bell", data)
-""
+
+def view_bells_with_query(ip_address, query):
+
+    url = f"http://{ip_address}/view_bells?type={query}"
+    headers = {
+        'Accept': 'application/json',
+        'Authorization': f'Basic {encoded}'
+    }
+    try:
+        response = requests.get(url, headers = headers)
+        response.raise_for_status()  
+        return response.text
+    except requests.RequestException as e:
+        print("Error:", e)
+        return None
+
 def delete_bell(ip_address, bell_id):
     data = {
         "bell_id": bell_id
@@ -505,7 +520,8 @@ def test_all_put(ip):
 
 if __name__ == "__main__":
 
-    ip = "192.168.29.54"  # Replace with your ESP32's IP address
+    ip = "192.168.29.22"  # Replace with your ESP32's IP address
+
 
     # test_all_get(ip)
     # test_all_put(ip)
@@ -513,7 +529,11 @@ if __name__ == "__main__":
     # get_response = get_ring_bell(ip)
     # get_response = get_repeat_bell(ip)
     # get_response = get_dop(ip)
-    get_response = view_bells(ip)
+    # get_response = view_bells(ip)
+
+
+    get_response = view_bells_with_query(ip, 1)
+
 
     # get_response = dop_view_bell(ip)
     # get_response = dom_view_bell(ip)
@@ -531,7 +551,7 @@ if __name__ == "__main__":
     # put_response = set_select_bell(ip, 8, True)
     # put_response = set_ring_bell(ip, 0, True, False)
     # put_response = set_repeat_bell(ip, False, 1, 1, 3)
-    #put_response = add_bell(ip, [3, 1, 1], [1, 0, 0], 0, 13, 0, [False,True,False,False,False,False,True], 2, 2, 12, 9, 25, 0)
+    # put_response = add_bell(ip, [3, 1, 1], [1, 0, 0], 0, 13, 0, [False,True,False,False,False,False,True], 2, 2, 12, 9, 25, 0)
     # put_response = send_firmware(ip, "pulsator-firmware.bin")
     # put_response = edit_bell(ip, 2, 2, 1, 8, 40, [True, True, False, False, False, True, False])
     # put_response = delete_bell(ip, 2)
@@ -545,8 +565,15 @@ if __name__ == "__main__":
     # put_response = set_all_dom(ip)
     # put_response = set_bell_patterns(ip)
 
-    if put_response:
-        print("PUT Response from server (Set):")
-        print(put_response)
+    # if put_response:
+    #     print("PUT Response from server (Set):")
+    #     print(put_response)
+    # else:
+    #     print("Failed to set")
+
+
+    if get_response:
+        print("GET response from the client(Get):")
+        print(get_response)
     else:
-        print("Failed to set")
+        print("Failed to get")
