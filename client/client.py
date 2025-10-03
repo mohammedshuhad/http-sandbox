@@ -200,7 +200,6 @@ def set_repeat_bell(ip_address, repeat, interval, up_to_time, bell_index ):
     return make_put_request(ip_address,"set_repeat_bell", data)
 
 def add_bell(ip_address, bell_index_arr, repeat_count_arr, season_index, hour, minute, schedule, dom_day, dom_occurence, dop_day, dop_month, dop_year, schedule_type):
-    # TODO : Muhammed - Check validity of all variables :: C
     if bell_index < 0 or bell_index > 3:
         print("Bell index must be in (0-3)")
         return None
@@ -264,7 +263,7 @@ def edit_bell(ip_address, bell_id, bell_index, season_index, hour, minute, sched
         "schedule": schedule
     }
     return make_put_request(ip_address, "edit_bell", data)
-
+""
 def delete_bell(ip_address, bell_id):
     data = {
         "bell_id": bell_id
