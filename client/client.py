@@ -199,12 +199,16 @@ def set_repeat_bell(ip_address, repeat, interval, up_to_time, bell_index ):
     }
     return make_put_request(ip_address,"set_repeat_bell", data)
 
-def add_bell(ip_address, bell_index_arr, repeat_count_arr, season_index, hour, minute, schedule, dom_day, dom_occurence, dop_day, dop_month, dop_year, schedule_type):
-    if bell_index < 0 or bell_index > 3:
-        print("Bell index must be in (0-3)")
+
+
+def add_bell(ip_address, bell_index_arr, repeat_count_arr, season_index, hour, minute,
+             schedule, dom_day, dom_occurence, dop_day, dop_month, dop_year,
+             schedule_type):
+    if len(bell_index_arr) != 3:
+        print("Bell index array must have 3 elements")
         return None
-    if repeat_count_arr < 0 or repeat_count_arr > 3:
-        print("Repeat index must be in (0-3)")
+    if len(repeat_count_arr)!= 3:
+        print("Repeat index must be in array must have 3 elements")
         return None
     if season_index < 0 or season_index > 4:
         print("Invalid season !!\n Enter SUMMER = 0, WINTER = 1,CHRISTMAS = 2,EASTER = 3,EXAM = 4,")
@@ -253,15 +257,26 @@ def add_bell(ip_address, bell_index_arr, repeat_count_arr, season_index, hour, m
     }
     return make_put_request(ip_address, "add_bell", data)
 
-def edit_bell(ip_address, bell_id, bell_index, season_index, hour, minute, schedule):
+def edit_bell(ip_address, bell_id, bell_index_arr, repeat_count_arr, season_index, hour, minute,
+             schedule, dom_day, dom_occurence, dop_day, dop_month, dop_year,
+             schedule_type):
+    
     data = {
-        "bell_id": bell_id,
-        "bell_index": bell_index,
+        "bell_id" :bell_id,
+        "bell_index_arr": bell_index_arr,
+        "repeat_count" : repeat_count_arr,
         "season_index": season_index,
         "hour": hour,
         "min": minute,
-        "schedule": schedule
+        "schedule": schedule,
+        "dom_day" : dom_day,
+        "dom_occurence" : dom_occurence,
+        "dop_day" : dop_day,
+        "dop_month" : dop_month,
+        "dop_year" : dop_year,
+        "schedule_type" : schedule_type
     }
+    print(data)
     return make_put_request(ip_address, "edit_bell", data)
 
 def view_bells_with_query(ip_address, query):
@@ -520,7 +535,7 @@ def test_all_put(ip):
 
 if __name__ == "__main__":
 
-    ip = "192.168.29.22"  # Replace with your ESP32's IP address
+    ip = "192.168.29.36"  # Replace with your ESP32's IP address
 
 
     # test_all_get(ip)
@@ -532,7 +547,11 @@ if __name__ == "__main__":
     # get_response = view_bells(ip)
 
 
-    get_response = view_bells_with_query(ip, 1)
+    get_response = view_bells_with_query(ip, 1) #Added New client get response with query parameter
+
+
+    
+    
 
 
     # get_response = dop_view_bell(ip)
@@ -551,10 +570,10 @@ if __name__ == "__main__":
     # put_response = set_select_bell(ip, 8, True)
     # put_response = set_ring_bell(ip, 0, True, False)
     # put_response = set_repeat_bell(ip, False, 1, 1, 3)
-    # put_response = add_bell(ip, [3, 1, 1], [1, 0, 0], 0, 13, 0, [False,True,False,False,False,False,True], 2, 2, 12, 9, 25, 0)
+    # put_response = add_bell(ip, [3, 1, 1], [1, 0, 0], 0, 14, 30, [False,True,False,False,False,False,True], 2, 2, 1, 1, 2025, 1)
     # put_response = send_firmware(ip, "pulsator-firmware.bin")
-    # put_response = edit_bell(ip, 2, 2, 1, 8, 40, [True, True, False, False, False, True, False])
-    # put_response = delete_bell(ip, 2)
+    # put_response = edit_bell(ip, 1,[3, 3, 3],[1, 2, 3],3,15,30,[False,True,False,False,False,False,True],1,1,1,1,2001,0)
+    # put_response = delete_bell(ip, 1)
     # put_response = set_dop(ip, "Day of Program", False, 25, 3, 35)
     # put_response = dop_add_bell(ip, 3, 13, 50)
     # put_response = dop_edit_bell(ip, 0, 0, 4, 55)
