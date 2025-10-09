@@ -467,6 +467,123 @@ def set_bell_patterns(ip_address):
         return make_put_request(ip_address, "set_patterns", patterns)
     return None
 
+
+# def get_and_set(ip1, ip2):
+#     credentials = "admin:password123"
+#     encoded = base64.b64encode(credentials.encode()).decode()
+
+#     headers = {
+#         "Authorization": f"Basic {encoded}",
+#         "Content-Type": "application/json"  # Add content type header
+#     }
+
+#     url1 = f"http://{ip1}/get_patterns"
+#     url2 = f"http://{ip2}/set_patterns"
+
+#     try:
+#         # Get patterns from first server
+#         response = requests.get(url1, headers=headers)
+#         response.raise_for_status()
+
+#         # Convert response to string and then parse as JSON
+#         data_str = response.text
+#         data = json.loads(data_str)
+#         print("Pattern data received from pulsator")
+        
+#         # print(data)
+#         # Send JSON data to second server
+#         response = requests.put(
+#             url2, 
+#             json=data,  # Use json parameter to automatically handle JSON encoding
+#             headers=headers
+#         )
+#         print("data after conversion",data)
+#         if response.status_code == 200:
+#             print("Pattern data sent successfully to second server.")
+#             print("Transferred pattern data:", json.dumps(data, indent=2))
+#         else:   
+#             print(f"Failed to send pattern data. Status code: {response.status_code}")
+#             print("Server response:", response.text)
+
+#     except requests.exceptions.RequestException as e:
+#         print(f"Network error occurred: {e}")
+#     except json.JSONDecodeError as e:
+#         print(f"Invalid JSON received from first server: {e}")
+#     except Exception as e:
+#         print(f"Unexpected error: {e}")
+
+def get_and_set(ip1, ip2):
+    credentials = "admin:password123"
+    encoded = base64.b64encode(credentials.encode()).decode()
+    CHUNK_SIZE = 500  # Maximum size of each chunk
+
+    headers = {
+        "Authorization": f"Basic {encoded}",
+        "Content-Type": "application/json"
+    }
+
+    url1 = f"http://{ip1}/get_patterns"
+    url2 = f"http://{ip2}/set_patterns"
+
+    try:
+        # Get patterns from first server
+        response = requests.get(url1, headers=headers)
+        response.raise_for_status()
+
+        # Convert response to string and then parse as JSON
+        data_str = response.text
+        data = json.loads(data_str)
+        print("Pattern data received from pulsator")
+
+        # Convert data back to JSON string
+        json_str = json.dumps(data)
+        total_length = len(json_str)
+        
+        # Split data into chunks
+        chunks = []
+        for i in range(0, total_length, CHUNK_SIZE):
+            chunk = json_str[i:i + CHUNK_SIZE]
+            chunks.append(chunk)
+        
+        print(f"Splitting data into {len(chunks)} chunks")
+
+        # Send chunks one by one
+        for i, chunk in enumerate(chunks):
+            chunk_data = {
+                "chunk_index": i,
+                "total_chunks": len(chunks),
+                "data": chunk
+            }
+            
+            response = requests.put(
+                url2,
+                json=chunk_data,
+                headers=headers
+            )
+            
+            if response.status_code == 200:
+                print(f"Chunk {i+1}/{len(chunks)} sent successfully")
+            else:
+                raise requests.exceptions.RequestException(
+                    f"Failed to send chunk {i+1}. Status code: {response.status_code}"
+                )
+
+        print("All pattern data chunks sent successfully")
+        
+    except requests.exceptions.RequestException as e:
+        print(f"Network error occurred: {e}")
+    except json.JSONDecodeError as e:
+        print(f"Invalid JSON received from first server: {e}")
+    except Exception as e:
+        print(f"Unexpected error: {e}")
+
+
+
+# def set_patterns_to_server(ip2,patterns):
+#     credentials = "admin:password123"
+#     encoded = base64.b64encode(credentials.encode()).decode()
+
+#         headers = { 
 def test_all_get(ip):
     methods = [get_ring_bell, get_repeat_bell, view_bells, get_all_dom, dom_view_bell, get_dop, dop_view_bell]
     failed_methods = []
@@ -535,7 +652,8 @@ def test_all_put(ip):
 
 if __name__ == "__main__":
 
-    ip = "192.168.29.36"  # Replace with your ESP32's IP address
+    ip1 = "10.228.220.243/"  # Replace with your ESP32's IP address
+    ip2 = "10.228.220.180/"  # Replace with your second ESP32's IP address
 
 
     # test_all_get(ip)
@@ -547,11 +665,12 @@ if __name__ == "__main__":
     # get_response = view_bells(ip)
 
 
-    get_response = view_bells_with_query(ip, 1) #Added New client get response with query parameter
+
+    # get_response = view_bells_with_query(ip,2) #Added New client get response with query parameter
 
 
     
-    
+    get_response = get_and_set(ip1,ip2)
 
 
     # get_response = dop_view_bell(ip)
@@ -572,7 +691,9 @@ if __name__ == "__main__":
     # put_response = set_repeat_bell(ip, False, 1, 1, 3)
     # put_response = add_bell(ip, [3, 1, 1], [1, 0, 0], 0, 14, 30, [False,True,False,False,False,False,True], 2, 2, 1, 1, 2025, 1)
     # put_response = send_firmware(ip, "pulsator-firmware.bin")
-    # put_response = edit_bell(ip, 1,[3, 3, 3],[1, 2, 3],3,15,30,[False,True,False,False,False,False,True],1,1,1,1,2001,0)
+
+    # put_response = edit_bell(ip, 3,[3, 3 ,3],[1, 2, 3],4,15,30,[False,True,False,False,False,False,True],1,1,1,1,2025,2)
+    
     # put_response = delete_bell(ip, 1)
     # put_response = set_dop(ip, "Day of Program", False, 25, 3, 35)
     # put_response = dop_add_bell(ip, 3, 13, 50)
