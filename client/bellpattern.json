@@ -1,312 +1,1864 @@
 {
-    "data": [
+  "data": [
+    {
+      "name": "Announce - All",
+      "bells": [
         {
-            "name": "New Koootamani",
-            "bells": [
-                {
-                    "pattern": [
-                        {"time": 30000, "state": true},
-                        {"time": 1000, "state": false}
-                    ],
-                    "repeat": 0
-                },
-                {
-                    "pattern": [
-                        {"time": 30000, "state": true},
-                        {"time": 1000, "state": false}
-                    ],
-                    "repeat": 0
-                },
-                {
-                    "pattern": [
-                        {"time": 30000, "state": true},
-                        {"time": 1000, "state": false}
-                    ],
-                    "repeat": 0
-                },
-                {
-                    "pattern": [
-                        {"time": 30000, "state": true},
-                        {"time": 1000, "state": false}
-                    ],
-                    "repeat": 0
-                },
-                {
-                    "pattern": [
-                        {"time": 30000, "state": true},
-                        {"time": 1000, "state": false}
-                    ],
-                    "repeat": 0
-                },
-                {
-                    "pattern": [
-                        {"time": 30000, "state": true},
-                        {"time": 1000, "state": false}
-                    ],
-                    "repeat": 0
-                },
-                {
-                    "pattern": [
-                        {"time": 30000, "state": true},
-                        {"time": 1000, "state": false}
-                    ],
-                    "repeat": 0
-                },
-                {
-                    "pattern": [
-                        {"time": 30000, "state": true},
-                        {"time": 1000, "state": false}
-                    ],
-                    "repeat": 0
-                }
-            ]
+          "pattern": [
+            {"time":  400, "state": true },
+            {"time": 1300, "state": false}
+          ],
+          "repeat": 34
         },
         {
-            "name": "MaranaMani",
-            "bells": [
-                {
-                    "pattern": [
-                        {"time": 2000, "state": true},
-                        {"time": 5000, "state": false}
-                    ],
-                    "repeat": 5
-                },
-                {
-                    "pattern": [
-                        {"time": 2000, "state": true},
-                        {"time": 5000, "state": false}
-                    ],
-                    "repeat": 5
-                },
-                {
-                    "pattern": [
-                        {"time": 2000, "state": true},
-                        {"time": 5000, "state": false}
-                    ],
-                    "repeat": 5
-                },
-                {
-                    "pattern": [
-                        {"time": 2000, "state": true},
-                        {"time": 5000, "state": false}
-                    ],
-                    "repeat": 5
-                },
-                {
-                    "pattern": [
-                        {"time": 2000, "state": true},
-                        {"time": 5000, "state": false}
-                    ],
-                    "repeat": 5
-                },
-                {
-                    "pattern": [
-                        {"time": 2000, "state": true},
-                        {"time": 5000, "state": false}
-                    ],
-                    "repeat": 5
-                },
-                {
-                    "pattern": [
-                        {"time": 2000, "state": true},
-                        {"time": 5000, "state": false}
-                    ],
-                    "repeat": 5
-                },
-                {
-                    "pattern": [
-                        {"time": 2000, "state": true},
-                        {"time": 5000, "state": false}
-                    ],
-                    "repeat": 5
-                }
-            ]
+          "pattern": [
+            {"time":  400, "state": false},
+            {"time":  300, "state": true },
+            {"time": 1000, "state": false}
+          ],
+          "repeat": 34
         },
         {
-            "name": "KurishuMani",
-            "bells": [
-                {
-                    "pattern": [
-                        {"time": 1000, "state": true},
-                        {"time": 3000, "state": false},
-                        {"time": 1000, "state": true},
-                        {"time": 3000, "state": false},
-                        {"time": 1000, "state": true},
-                        {"time": 5000, "state": false}
-                    ],
-                    "repeat": 0
-                },
-                {
-                    "pattern": [
-                        {"time": 1000, "state": true},
-                        {"time": 3000, "state": false},
-                        {"time": 1000, "state": true},
-                        {"time": 3000, "state": false},
-                        {"time": 1000, "state": true},
-                        {"time": 5000, "state": false}
-                    ],
-                    "repeat": 0
-                },
-                {
-                    "pattern": [
-                        {"time": 1000, "state": true},
-                        {"time": 3000, "state": false},
-                        {"time": 1000, "state": true},
-                        {"time": 3000, "state": false},
-                        {"time": 1000, "state": true},
-                        {"time": 5000, "state": false}
-                    ],
-                    "repeat": 0
-                },
-                {
-                    "pattern": [
-                        {"time": 1000, "state": true},
-                        {"time": 3000, "state": false},
-                        {"time": 1000, "state": true},
-                        {"time": 3000, "state": false},
-                        {"time": 1000, "state": true},
-                        {"time": 5000, "state": false}
-                    ],
-                    "repeat": 0
-                },
-                {
-                    "pattern": [
-                        {"time": 1000, "state": true},
-                        {"time": 3000, "state": false},
-                        {"time": 1000, "state": true},
-                        {"time": 3000, "state": false},
-                        {"time": 1000, "state": true},
-                        {"time": 5000, "state": false}
-                    ],
-                    "repeat": 0
-                },
-                {
-                    "pattern": [
-                        {"time": 1000, "state": true},
-                        {"time": 3000, "state": false},
-                        {"time": 1000, "state": true},
-                        {"time": 3000, "state": false},
-                        {"time": 1000, "state": true},
-                        {"time": 5000, "state": false}
-                    ],
-                    "repeat": 0
-                },
-                {
-                    "pattern": [
-                        {"time": 1000, "state": true},
-                        {"time": 3000, "state": false},
-                        {"time": 1000, "state": true},
-                        {"time": 3000, "state": false},
-                        {"time": 1000, "state": true},
-                        {"time": 5000, "state": false}
-                    ],
-                    "repeat": 0
-                },
-                {
-                    "pattern": [
-                        {"time": 1000, "state": true},
-                        {"time": 3000, "state": false},
-                        {"time": 1000, "state": true},
-                        {"time": 3000, "state": false},
-                        {"time": 1000, "state": true},
-                        {"time": 5000, "state": false}
-                    ],
-                    "repeat": 0
-                }
-            ]
+          "pattern": [
+            {"time": 700, "state": false},
+            {"time": 300, "state": true },
+            {"time": 700, "state": false}
+          ],
+          "repeat": 34
         },
         {
-            "name": "Http Song",
-            "bells": [
-                {
-                    "pattern": [
-                        {"time": 1000, "state": true},
-                        {"time": 1000, "state": false},
-                        {"time": 1000, "state": true},
-                        {"time": 1000, "state": false},
-                        {"time": 1000, "state": true},
-                        {"time": 1000, "state": false}
-                    ],
-                    "repeat": 3
-                },
-                {
-                    "pattern": [
-                        {"time": 1000, "state": true},
-                        {"time": 1000, "state": false},
-                        {"time": 1000, "state": true},
-                        {"time": 1000, "state": false},
-                        {"time": 1000, "state": true},
-                        {"time": 1000, "state": false}
-                    ],
-                    "repeat": 3
-                },
-                {
-                    "pattern": [
-                        {"time": 1000, "state": true},
-                        {"time": 1000, "state": false},
-                        {"time": 1000, "state": true},
-                        {"time": 1000, "state": false},
-                        {"time": 1000, "state": true},
-                        {"time": 1000, "state": false}
-                    ],
-                    "repeat": 3
-                },
-                {
-                    "pattern": [
-                        {"time": 1000, "state": true},
-                        {"time": 1000, "state": false},
-                        {"time": 1000, "state": true},
-                        {"time": 1000, "state": false},
-                        {"time": 1000, "state": true},
-                        {"time": 1000, "state": false}
-                    ],
-                    "repeat": 3
-                },
-                {
-                    "pattern": [
-                        {"time": 1000, "state": true},
-                        {"time": 1000, "state": false},
-                        {"time": 1000, "state": true},
-                        {"time": 1000, "state": false},
-                        {"time": 1000, "state": true},
-                        {"time": 1000, "state": false}
-                    ],
-                    "repeat": 3
-                },
-                {
-                    "pattern": [
-                        {"time": 1000, "state": true},
-                        {"time": 1000, "state": false},
-                        {"time": 1000, "state": true},
-                        {"time": 1000, "state": false},
-                        {"time": 1000, "state": true},
-                        {"time": 1000, "state": false}
-                    ],
-                    "repeat": 3
-                },
-                {
-                    "pattern": [
-                        {"time": 1000, "state": true},
-                        {"time": 1000, "state": false},
-                        {"time": 1000, "state": true},
-                        {"time": 1000, "state": false},
-                        {"time": 1000, "state": true},
-                        {"time": 1000, "state": false}
-                    ],
-                    "repeat": 3
-                },
-                {
-                    "pattern": [
-                        {"time": 1000, "state": true},
-                        {"time": 1000, "state": false},
-                        {"time": 1000, "state": true},
-                        {"time": 1000, "state": false},
-                        {"time": 1000, "state": true},
-                        {"time": 1000, "state": false}
-                    ],
-                    "repeat": 3
-                }
-            ]
+          "pattern": [
+            {"time": 1000, "state": false},
+            {"time":  300, "state": true },
+            {"time":  400, "state": false}
+          ],
+          "repeat": 34
+        },
+        {
+          "pattern": [ {"time": 1700, "state": false} ],
+          "repeat": 34
+        },
+        {
+          "pattern": [ {"time": 1700, "state": false} ],
+          "repeat": 34
+        },
+        {
+          "pattern": [ {"time": 1700, "state": false} ],
+          "repeat": 34
+        },
+        {
+          "pattern": [ {"time": 1700, "state": false} ],
+          "repeat": 34
         }
-    ]
+      ]
+    },
+    {
+      "name": "Announce- NS - All",
+      "bells": [
+        {
+          "pattern": [
+            {"time":  400, "state": true },
+            {"time": 1300, "state": false}
+          ],
+          "repeat": 6200
+        },
+        {
+          "pattern": [
+            {"time":  400, "state": false},
+            {"time":  300, "state": true },
+            {"time": 1000, "state": false}
+          ],
+          "repeat": 6200
+        },
+        {
+          "pattern": [
+            {"time": 700, "state": false},
+            {"time": 300, "state": true },
+            {"time": 700, "state": false}
+          ],
+          "repeat": 6200
+        },
+        {
+          "pattern": [
+            {"time": 1000, "state": false},
+            {"time":  300, "state": true },
+            {"time":  400, "state": false}
+          ],
+          "repeat": 6200
+        },
+        {
+          "pattern": [ {"time": 1700, "state": false} ],
+          "repeat": 6200
+        },
+        {
+          "pattern": [ {"time": 1700, "state": false} ],
+          "repeat": 6200
+        },
+        {
+          "pattern": [ {"time": 1700, "state": false} ],
+          "repeat": 6200
+        },
+        {
+          "pattern": [ {"time": 1700, "state": false} ],
+          "repeat": 6200
+        }
+      ]
+    },
+    {
+      "name": "Announce- Alt",
+      "bells": [
+        {
+          "pattern": [
+            {"time":  400, "state": true },
+            {"time": 2210, "state": false}
+          ],
+          "repeat": 24
+        },
+        {
+          "pattern": [
+            {"time":  800, "state": false},
+            {"time":  300, "state": true },
+            {"time": 1510, "state": false}
+          ],
+          "repeat": 24
+        },
+        {
+          "pattern": [
+            {"time": 1400, "state": false},
+            {"time":  300, "state": true },
+            {"time":  910, "state": false}
+          ],
+          "repeat": 24
+        },
+        {
+          "pattern": [
+            {"time": 2000, "state": false},
+            {"time":  300, "state": true },
+            {"time":  310, "state": false}
+          ],
+          "repeat": 24
+        },
+        {
+          "pattern": [ {"time": 2610, "state": false} ],
+          "repeat": 24
+        },
+        {
+          "pattern": [ {"time": 2610, "state": false} ],
+          "repeat": 24
+        },
+        {
+          "pattern": [ {"time": 2610, "state": false} ],
+          "repeat": 24
+        },
+        {
+          "pattern": [ {"time": 2610, "state": false} ],
+          "repeat": 24
+        }
+      ]
+    },
+    {
+      "name": "Announce NS - Alt",
+      "bells": [
+        {
+          "pattern": [
+            {"time":  400, "state": true },
+            {"time": 2210, "state": false}
+          ],
+          "repeat": 1440
+        },
+        {
+          "pattern": [
+            {"time":  800, "state": false},
+            {"time":  300, "state": true },
+            {"time": 1510, "state": false}
+          ],
+          "repeat": 1440
+        },
+        {
+          "pattern": [
+            {"time": 1400, "state": false},
+            {"time":  300, "state": true },
+            {"time":  910, "state": false}
+          ],
+          "repeat": 1440
+        },
+        {
+          "pattern": [
+            {"time": 2000, "state": false},
+            {"time":  300, "state": true },
+            {"time":  310, "state": false}
+          ],
+          "repeat": 1440
+        },
+        {
+          "pattern": [ {"time": 2610, "state": false} ],
+          "repeat": 1440
+        },
+        {
+          "pattern": [ {"time": 2610, "state": false} ],
+          "repeat": 1440
+        },
+        {
+          "pattern": [ {"time": 2610, "state": false} ],
+          "repeat": 1440
+        },
+        {
+          "pattern": [ {"time": 2610, "state": false} ],
+          "repeat": 1440
+        }
+      ]
+    },
+    {
+      "name": "Announce Bell 1",
+      "bells": [
+        {
+          "pattern": [ {"time": 60000, "state": true} ],
+          "repeat": 0
+        },
+        {
+          "pattern": [ {"time": 60000, "state": false} ],
+          "repeat": 0
+        },
+        {
+          "pattern": [ {"time": 60000, "state": false} ],
+          "repeat": 0
+        },
+        {
+          "pattern": [ {"time": 60000, "state": false} ],
+          "repeat": 0
+        },
+        {
+          "pattern": [ {"time": 60000, "state": false} ],
+          "repeat": 0
+        },
+        {
+          "pattern": [ {"time": 60000, "state": false} ],
+          "repeat": 0
+        },
+        {
+          "pattern": [ {"time": 60000, "state": false} ],
+          "repeat": 0
+        },
+        {
+          "pattern": [ {"time": 60000, "state": false} ],
+          "repeat": 0
+        }
+      ]
+    },
+    {
+      "name": "Announce Bell 2",
+      "bells": [
+        {
+          "pattern": [ {"time": 60000, "state": false} ],
+          "repeat": 0
+        },
+        {
+          "pattern": [ {"time": 60000, "state": true} ],
+          "repeat": 0
+        },
+        {
+          "pattern": [ {"time": 60000, "state": false} ],
+          "repeat": 0
+        },
+        {
+          "pattern": [ {"time": 60000, "state": false} ],
+          "repeat": 0
+        },
+        {
+          "pattern": [ {"time": 60000, "state": false} ],
+          "repeat": 0
+        },
+        {
+          "pattern": [ {"time": 60000, "state": false} ],
+          "repeat": 0
+        },
+        {
+          "pattern": [ {"time": 60000, "state": false} ],
+          "repeat": 0
+        },
+        {
+          "pattern": [ {"time": 60000, "state": false} ],
+          "repeat": 0
+        }
+      ]
+    },
+    {
+      "name": "Announce Bell 3",
+      "bells": [
+        {
+          "pattern": [ {"time": 60000, "state": false} ],
+          "repeat": 0
+        },
+        {
+          "pattern": [ {"time": 60000, "state": false} ],
+          "repeat": 0
+        },
+        {
+          "pattern": [ {"time": 60000, "state": true} ],
+          "repeat": 0
+        },
+        {
+          "pattern": [ {"time": 60000, "state": false} ],
+          "repeat": 0
+        },
+        {
+          "pattern": [ {"time": 60000, "state": false} ],
+          "repeat": 0
+        },
+        {
+          "pattern": [ {"time": 60000, "state": false} ],
+          "repeat": 0
+        },
+        {
+          "pattern": [ {"time": 60000, "state": false} ],
+          "repeat": 0
+        },
+        {
+          "pattern": [ {"time": 60000, "state": false} ],
+          "repeat": 0
+        }
+      ]
+    },
+    {
+      "name": "Announce Bell 4",
+      "bells": [
+        {
+          "pattern": [ {"time": 60000, "state": false} ],
+          "repeat": 0
+        },
+        {
+          "pattern": [ {"time": 60000, "state": false} ],
+          "repeat": 0
+        },
+        {
+          "pattern": [ {"time": 60000, "state": false} ],
+          "repeat": 0
+        },
+        {
+          "pattern": [ {"time": 60000, "state": true} ],
+          "repeat": 0
+        },
+        {
+          "pattern": [ {"time": 60000, "state": false} ],
+          "repeat": 0
+        },
+        {
+          "pattern": [ {"time": 60000, "state": false} ],
+          "repeat": 0
+        },
+        {
+          "pattern": [ {"time": 60000, "state": false} ],
+          "repeat": 0
+        },
+        {
+          "pattern": [ {"time": 60000, "state": false} ],
+          "repeat": 0
+        }
+      ]
+    },
+    {
+      "name": "Laity Funeral",
+      "bells": [
+        {
+          "pattern": [
+            {"time":  400, "state": true },
+            {"time": 8600, "state": false}
+          ],
+          "repeat": 5
+        },
+        {
+          "pattern": [
+            {"time": 2800, "state": false},
+            {"time":  900, "state": true },
+            {"time": 5300, "state": false}
+          ],
+          "repeat": 5
+        },
+        {
+          "pattern": [ {"time": 9000, "state": false} ],
+          "repeat": 5
+        },
+        {
+          "pattern": [ {"time": 9000, "state": false} ],
+          "repeat": 5
+        },
+        {
+          "pattern": [ {"time": 9000, "state": false} ],
+          "repeat": 5
+        },
+        {
+          "pattern": [ {"time": 9000, "state": false} ],
+          "repeat": 5
+        },
+        {
+          "pattern": [ {"time": 9000, "state": false} ],
+          "repeat": 5
+        },
+        {
+          "pattern": [ {"time": 9000, "state": false} ],
+          "repeat": 5
+        }
+      ]
+    },
+    {
+      "name": "Laity Funeral NS",
+      "bells": [
+        {
+          "pattern": [
+            {"time":  400, "state": true },
+            {"time": 8600, "state": false}
+          ],
+          "repeat": 1500
+        },
+        {
+          "pattern": [
+            {"time": 2800, "state": false},
+            {"time":  900, "state": true },
+            {"time": 5300, "state": false}
+          ],
+          "repeat": 1500
+        },
+        {
+          "pattern": [ {"time": 9000, "state": false} ],
+          "repeat": 1500
+        },
+        {
+          "pattern": [ {"time": 9000, "state": false} ],
+          "repeat": 1500
+        },
+        {
+          "pattern": [ {"time": 9000, "state": false} ],
+          "repeat": 1500
+        },
+        {
+          "pattern": [ {"time": 9000, "state": false} ],
+          "repeat": 1500
+        },
+        {
+          "pattern": [ {"time": 9000, "state": false} ],
+          "repeat": 1500
+        },
+        {
+          "pattern": [ {"time": 9000, "state": false} ],
+          "repeat": 1500
+        }
+      ]
+    },
+    {
+      "name": "Angelus",
+      "bells": [
+        {
+          "pattern": [ {"time": 25500, "state": false} ],
+          "repeat": 0
+        },
+        {
+          "pattern": [
+            {"time":  300, "state": true },
+            {"time": 2300, "state": false},
+            {"time":  300, "state": true },
+            {"time": 2300, "state": false},
+            {"time":  300, "state": true },
+            {"time": 4300, "state": false},
+            {"time":  300, "state": true },
+            {"time": 2300, "state": false},
+            {"time":  300, "state": true },
+            {"time": 2300, "state": false},
+            {"time":  300, "state": true },
+            {"time": 4300, "state": false},
+            {"time":  300, "state": true },
+            {"time": 2300, "state": false},
+            {"time":  300, "state": true },
+            {"time": 2300, "state": false},
+            {"time":  300, "state": true },
+            {"time":  400, "state": false}
+          ],
+          "repeat": 0
+        },
+        {
+          "pattern": [ {"time": 25500, "state": false} ],
+          "repeat": 0
+        },
+        {
+          "pattern": [ {"time": 25500, "state": false} ],
+          "repeat": 0
+        },
+        {
+          "pattern": [ {"time": 25500, "state": false} ],
+          "repeat": 0
+        },
+        {
+          "pattern": [ {"time": 25500, "state": false} ],
+          "repeat": 0
+        },
+        {
+          "pattern": [ {"time": 25500, "state": false} ],
+          "repeat": 0
+        },
+        {
+          "pattern": [ {"time": 25500, "state": false} ],
+          "repeat": 0
+        }
+      ]
+    },
+    {
+      "name": "Angelus + Cont",
+      "bells": [
+        {
+          "pattern": [
+            {"time": 26500, "state": false},
+            {"time": 58800, "state": true },
+            {"time":   700, "state": false}
+          ],
+          "repeat": 0
+        },
+        {
+          "pattern": [
+            {"time":   300, "state": true },
+            {"time":  2300, "state": false},
+            {"time":   300, "state": true },
+            {"time":  2300, "state": false},
+            {"time":   300, "state": true },
+            {"time":  3300, "state": false},
+            {"time":   300, "state": true },
+            {"time":  2300, "state": false},
+            {"time":   300, "state": true },
+            {"time":  2300, "state": false},
+            {"time":   300, "state": true },
+            {"time":  3300, "state": false},
+            {"time":   300, "state": true },
+            {"time":  2300, "state": false},
+            {"time":   300, "state": true },
+            {"time":  2300, "state": false},
+            {"time":   300, "state": true },
+            {"time":  3400, "state": false},
+            {"time": 59100, "state": true },
+            {"time":   400, "state": false}
+          ],
+          "repeat": 0
+        },
+        {
+          "pattern": [
+            {"time": 26500, "state": false},
+            {"time": 59100, "state": true },
+            {"time":   400, "state": false}
+          ],
+          "repeat": 0
+        },
+        {
+          "pattern": [
+            {"time": 26500, "state": false},
+            {"time": 59100, "state": true },
+            {"time":   400, "state": false}
+          ],
+          "repeat": 0
+        },
+        {
+          "pattern": [ {"time": 86000, "state": false} ],
+          "repeat": 0
+        },
+        {
+          "pattern": [ {"time": 86000, "state": false} ],
+          "repeat": 0
+        },
+        {
+          "pattern": [ {"time": 86000, "state": false} ],
+          "repeat": 0
+        },
+        {
+          "pattern": [ {"time": 86000, "state": false} ],
+          "repeat": 0
+        }
+      ]
+    },
+    {
+      "name": "Mass 1st Bell",
+      "bells": [
+        {
+          "pattern": [
+            {"time":   400, "state": true },
+            {"time":  3400, "state": false},
+            {"time": 59600, "state": true },
+            {"time":  3400, "state": false},
+            {"time":   400, "state": true },
+            {"time":  1400, "state": false}
+          ],
+          "repeat": 0
+        },
+        {
+          "pattern": [
+            {"time":  3800, "state": false},
+            {"time": 59700, "state": true },
+            {"time":  5100, "state": false}
+          ],
+          "repeat": 0
+        },
+        {
+          "pattern": [
+            {"time":  3800, "state": false},
+            {"time": 59700, "state": true },
+            {"time":  5100, "state": false}
+          ],
+          "repeat": 0
+        },
+        {
+          "pattern": [
+            {"time":  3800, "state": false},
+            {"time": 59700, "state": true },
+            {"time":  5100, "state": false}
+          ],
+          "repeat": 0
+        },
+        {
+          "pattern": [ {"time": 68600, "state": false} ],
+          "repeat": 0
+        },
+        {
+          "pattern": [ {"time": 68600, "state": false} ],
+          "repeat": 0
+        },
+        {
+          "pattern": [ {"time": 68600, "state": false} ],
+          "repeat": 0
+        },
+        {
+          "pattern": [ {"time": 68600, "state": false} ],
+          "repeat": 0
+        }
+      ]
+    },
+    {
+      "name": "Mass 2nd Bell",
+      "bells": [
+        {
+          "pattern": [
+            {"time":   400, "state": true },
+            {"time":  3400, "state": false},
+            {"time":   400, "state": true },
+            {"time":  3400, "state": false},
+            {"time": 59600, "state": true },
+            {"time":  3400, "state": false},
+            {"time":   400, "state": true },
+            {"time":  3400, "state": false},
+            {"time":   400, "state": true },
+            {"time":  1400, "state": false}
+          ],
+          "repeat": 0
+        },
+        {
+          "pattern": [
+            {"time":  7600, "state": false},
+            {"time": 59700, "state": true },
+            {"time":  8900, "state": false}
+          ],
+          "repeat": 0
+        },
+        {
+          "pattern": [
+            {"time":  7600, "state": false},
+            {"time": 59700, "state": true },
+            {"time":  8900, "state": false}
+          ],
+          "repeat": 0
+        },
+        {
+          "pattern": [
+            {"time":  7600, "state": false},
+            {"time": 59700, "state": true },
+            {"time":  8900, "state": false}
+          ],
+          "repeat": 0
+        },
+        {
+          "pattern": [ {"time": 76200, "state": false} ],
+          "repeat": 0
+        },
+        {
+          "pattern": [ {"time": 76200, "state": false} ],
+          "repeat": 0
+        },
+        {
+          "pattern": [ {"time": 76200, "state": false} ],
+          "repeat": 0
+        },
+        {
+          "pattern": [ {"time": 76200, "state": false} ],
+          "repeat": 0
+        }
+      ]
+    },
+    {
+      "name": "Mass 3rd Bell",
+      "bells": [
+        {
+          "pattern": [
+            {"time":   400, "state": true },
+            {"time":  3400, "state": false},
+            {"time":   400, "state": true },
+            {"time":  3400, "state": false},
+            {"time":   400, "state": true },
+            {"time":  3400, "state": false},
+            {"time": 59600, "state": true },
+            {"time":  3400, "state": false},
+            {"time":   400, "state": true },
+            {"time":  3400, "state": false},
+            {"time":   400, "state": true },
+            {"time":  3400, "state": false},
+            {"time":   400, "state": true },
+            {"time":  1400, "state": false}
+          ],
+          "repeat": 0
+        },
+        {
+          "pattern": [
+            {"time": 11400, "state": false},
+            {"time": 59700, "state": true },
+            {"time": 12700, "state": false}
+          ],
+          "repeat": 0
+        },
+        {
+          "pattern": [
+            {"time": 11400, "state": false},
+            {"time": 59700, "state": true },
+            {"time": 12700, "state": false}
+          ],
+          "repeat": 0
+        },
+        {
+          "pattern": [
+            {"time": 11400, "state": false},
+            {"time": 59700, "state": true },
+            {"time": 12700, "state": false}
+          ],
+          "repeat": 0
+        },
+        {
+          "pattern": [ {"time": 83800, "state": false} ],
+          "repeat": 0
+        },
+        {
+          "pattern": [ {"time": 83800, "state": false} ],
+          "repeat": 0
+        },
+        {
+          "pattern": [ {"time": 83800, "state": false} ],
+          "repeat": 0
+        },
+        {
+          "pattern": [ {"time": 83800, "state": false} ],
+          "repeat": 0
+        }
+      ]
+    },
+    {
+      "name": "All Souls Bell",
+      "bells": [
+        {
+          "pattern": [ {"time": 14600, "state": false} ],
+          "repeat": 0
+        },
+        {
+          "pattern": [
+            {"time":  300, "state": true },
+            {"time": 2300, "state": false},
+            {"time":  300, "state": true },
+            {"time": 2300, "state": false},
+            {"time":  300, "state": true },
+            {"time": 2300, "state": false},
+            {"time":  300, "state": true },
+            {"time": 2300, "state": false},
+            {"time":  300, "state": true },
+            {"time": 2300, "state": false},
+            {"time":  300, "state": true },
+            {"time": 1300, "state": false}
+          ],
+          "repeat": 0
+        },
+        {
+          "pattern": [ {"time": 14600, "state": false} ],
+          "repeat": 0
+        },
+        {
+          "pattern": [ {"time": 14600, "state": false} ],
+          "repeat": 0
+        },
+        {
+          "pattern": [ {"time": 14600, "state": false} ],
+          "repeat": 0
+        },
+        {
+          "pattern": [ {"time": 14600, "state": false} ],
+          "repeat": 0
+        },
+        {
+          "pattern": [ {"time": 14600, "state": false} ],
+          "repeat": 0
+        },
+        {
+          "pattern": [ {"time": 14600, "state": false} ],
+          "repeat": 0
+        }
+      ]
+    },
+    {
+      "name": "Priest Funeral",
+      "bells": [
+        {
+          "pattern": [ {"time": 10400, "state": false} ],
+          "repeat": 5
+        },
+        {
+          "pattern": [
+            {"time":  300, "state": true },
+            {"time": 3300, "state": false},
+            {"time": 1500, "state": true },
+            {"time": 5300, "state": false}
+          ],
+          "repeat": 5
+        },
+        {
+          "pattern": [ {"time": 10400, "state": false} ],
+          "repeat": 5
+        },
+        {
+          "pattern": [ {"time": 10400, "state": false} ],
+          "repeat": 5
+        },
+        {
+          "pattern": [ {"time": 10400, "state": false} ],
+          "repeat": 5
+        },
+        {
+          "pattern": [ {"time": 10400, "state": false} ],
+          "repeat": 5
+        },
+        {
+          "pattern": [ {"time": 10400, "state": false} ],
+          "repeat": 5
+        },
+        {
+          "pattern": [ {"time": 10400, "state": false} ],
+          "repeat": 5
+        }
+      ]
+    },
+    {
+      "name": "Bishop Funeral",
+      "bells": [
+        {
+          "pattern": [
+            {"time": 1200, "state": true },
+            {"time": 3400, "state": false},
+            {"time": 2000, "state": true },
+            {"time": 5400, "state": false}
+          ],
+          "repeat": 5
+        },
+        {
+          "pattern": [ {"time": 12000, "state": false} ],
+          "repeat": 5
+        },
+        {
+          "pattern": [ {"time": 12000, "state": false} ],
+          "repeat": 5
+        },
+        {
+          "pattern": [ {"time": 12000, "state": false} ],
+          "repeat": 5
+        },
+        {
+          "pattern": [ {"time": 12000, "state": false} ],
+          "repeat": 5
+        },
+        {
+          "pattern": [ {"time": 12000, "state": false} ],
+          "repeat": 5
+        },
+        {
+          "pattern": [ {"time": 12000, "state": false} ],
+          "repeat": 5
+        },
+        {
+          "pattern": [ {"time": 12000, "state": false} ],
+          "repeat": 5
+        }
+      ]
+    },
+    {
+      "name": "Pope Funeral",
+      "bells": [
+        {
+          "pattern": [
+            {"time": 2000, "state": true },
+            {"time": 3400, "state": false},
+            {"time": 2800, "state": true },
+            {"time": 5400, "state": false}
+          ],
+          "repeat": 5
+        },
+        {
+          "pattern": [ {"time": 13600, "state": false} ],
+          "repeat": 5
+        },
+        {
+          "pattern": [ {"time": 13600, "state": false} ],
+          "repeat": 5
+        },
+        {
+          "pattern": [ {"time": 13600, "state": false} ],
+          "repeat": 5
+        },
+        {
+          "pattern": [ {"time": 13600, "state": false} ],
+          "repeat": 5
+        },
+        {
+          "pattern": [ {"time": 13600, "state": false} ],
+          "repeat": 5
+        },
+        {
+          "pattern": [ {"time": 13600, "state": false} ],
+          "repeat": 5
+        },
+        {
+          "pattern": [ {"time": 13600, "state": false} ],
+          "repeat": 5
+        }
+      ]
+    },
+    {
+      "name": "Procession - N",
+      "bells": [
+        {
+          "pattern": [
+            {"time":  400, "state": true },
+            {"time": 2210, "state": false}
+          ],
+          "repeat": 5000
+        },
+        {
+          "pattern": [
+            {"time":  800, "state": false},
+            {"time":  300, "state": true },
+            {"time": 1510, "state": false}
+          ],
+          "repeat": 5000
+        },
+        {
+          "pattern": [
+            {"time": 1400, "state": false},
+            {"time":  300, "state": true },
+            {"time":  910, "state": false}
+          ],
+          "repeat": 5000
+        },
+        {
+          "pattern": [
+            {"time": 2000, "state": false},
+            {"time":  300, "state": true },
+            {"time":  310, "state": false}
+          ],
+          "repeat": 5000
+        },
+        {
+          "pattern": [ {"time": 2610, "state": false} ],
+          "repeat": 5000
+        },
+        {
+          "pattern": [ {"time": 2610, "state": false} ],
+          "repeat": 5000
+        },
+        {
+          "pattern": [ {"time": 2610, "state": false} ],
+          "repeat": 5000
+        },
+        {
+          "pattern": [ {"time": 2610, "state": false} ],
+          "repeat": 5000
+        }
+      ]
+    },
+    {
+      "name": "Procession - S",
+      "bells": [
+        {
+          "pattern": [
+            {"time": 29200, "state": true },
+            {"time":   800, "state": false}
+          ],
+          "repeat": 1440
+        },
+        {
+          "pattern": [ {"time": 30000, "state": true} ],
+          "repeat": 1440
+        },
+        {
+          "pattern": [ {"time": 30000, "state": true} ],
+          "repeat": 1440
+        },
+        {
+          "pattern": [ {"time": 30000, "state": true} ],
+          "repeat": 1440
+        },
+        {
+          "pattern": [ {"time": 30000, "state": false} ],
+          "repeat": 1440
+        },
+        {
+          "pattern": [ {"time": 30000, "state": false} ],
+          "repeat": 1440
+        },
+        {
+          "pattern": [ {"time": 30000, "state": false} ],
+          "repeat": 1440
+        },
+        {
+          "pattern": [ {"time": 30000, "state": false} ],
+          "repeat": 1440
+        }
+      ]
+    },
+    {
+      "name": "Ave Maria - B",
+      "bells": [
+        {
+          "pattern": [
+            {"time":  1400, "state": false},
+            {"time":   400, "state": true },
+            {"time":  1200, "state": false},
+            {"time":   400, "state": true },
+            {"time":  2600, "state": false},
+            {"time":   400, "state": true },
+            {"time":  1200, "state": false},
+            {"time":   400, "state": true },
+            {"time":  7400, "state": false},
+            {"time":   400, "state": true },
+            {"time":  3400, "state": false},
+            {"time":   400, "state": true },
+            {"time":  1200, "state": false},
+            {"time":   400, "state": true },
+            {"time":  2600, "state": false},
+            {"time":   400, "state": true },
+            {"time":  1200, "state": false},
+            {"time":   400, "state": true },
+            {"time":  7400, "state": false},
+            {"time":   400, "state": true },
+            {"time":  2000, "state": false},
+            {"time":   400, "state": true },
+            {"time": 14800, "state": false},
+            {"time":   400, "state": true },
+            {"time": 13200, "state": false},
+            {"time":   400, "state": true },
+            {"time":  1600, "state": false}
+          ],
+          "repeat": 2
+        },
+        {
+          "pattern": [
+            {"time": 10600, "state": false},
+            {"time":   300, "state": true },
+            {"time":  1100, "state": false},
+            {"time":   300, "state": true },
+            {"time":  2100, "state": false},
+            {"time":   300, "state": true },
+            {"time": 13700, "state": false},
+            {"time":   300, "state": true },
+            {"time":  1100, "state": false},
+            {"time":   300, "state": true },
+            {"time":  2100, "state": false},
+            {"time":   300, "state": true },
+            {"time": 11900, "state": false},
+            {"time":   300, "state": true },
+            {"time":  1100, "state": false},
+            {"time":   300, "state": true },
+            {"time":  1100, "state": false},
+            {"time":   300, "state": true },
+            {"time": 12100, "state": false},
+            {"time":   300, "state": true },
+            {"time":  1100, "state": false},
+            {"time":   300, "state": true },
+            {"time":  2100, "state": false},
+            {"time":   300, "state": true },
+            {"time":  2700, "state": false}
+          ],
+          "repeat": 2
+        },
+        {
+          "pattern": [
+            {"time":  300, "state": true },
+            {"time": 4300, "state": false},
+            {"time":  300, "state": true },
+            {"time": 4300, "state": false},
+            {"time":  300, "state": true },
+            {"time": 3900, "state": false},
+            {"time":  300, "state": true },
+            {"time": 4100, "state": false},
+            {"time":  300, "state": true },
+            {"time": 4300, "state": false},
+            {"time":  300, "state": true },
+            {"time": 4300, "state": false},
+            {"time":  300, "state": true },
+            {"time": 3900, "state": false},
+            {"time":  300, "state": true },
+            {"time": 9300, "state": false},
+            {"time":  300, "state": true },
+            {"time": 1900, "state": false},
+            {"time":  300, "state": true },
+            {"time": 5300, "state": false},
+            {"time":  300, "state": true },
+            {"time": 7100, "state": false},
+            {"time":  300, "state": true },
+            {"time": 1900, "state": false},
+            {"time":  300, "state": true },
+            {"time": 3900, "state": false},
+            {"time":  300, "state": true },
+            {"time": 3700, "state": false}
+          ],
+          "repeat": 2
+        },
+        {
+          "pattern": [
+            {"time": 37200, "state": false},
+            {"time":   300, "state": true },
+            {"time":  1900, "state": false},
+            {"time":   300, "state": true },
+            {"time": 12700, "state": false},
+            {"time":   300, "state": true },
+            {"time":  1900, "state": false},
+            {"time":   300, "state": true },
+            {"time": 11500, "state": false}
+          ],
+          "repeat": 2
+        },
+        {
+          "pattern": [ {"time": 66400, "state": false} ],
+          "repeat": 2
+        },
+        {
+          "pattern": [ {"time": 66400, "state": false} ],
+          "repeat": 2
+        },
+        {
+          "pattern": [ {"time": 66400, "state": false} ],
+          "repeat": 2
+        },
+        {
+          "pattern": [ {"time": 66400, "state": false} ],
+          "repeat": 2
+        }
+      ]
+    },
+    {
+      "name": "Ave Maria - H",
+      "bells": [
+        {
+          "pattern": [ {"time": 58000, "state": false} ],
+          "repeat": 0
+        },
+        {
+          "pattern": [ {"time": 58000, "state": false} ],
+          "repeat": 0
+        },
+        {
+          "pattern": [ {"time": 58000, "state": false} ],
+          "repeat": 0
+        },
+        {
+          "pattern": [ {"time": 58000, "state": false} ],
+          "repeat": 0
+        },
+        {
+          "pattern": [
+            {"time":  600, "state": false},
+            {"time":   50, "state": true },
+            {"time":  550, "state": false},
+            {"time":   50, "state": true },
+            {"time": 1150, "state": false},
+            {"time":   50, "state": true },
+            {"time":  550, "state": false},
+            {"time":   50, "state": true },
+            {"time": 2950, "state": false},
+            {"time":   50, "state": true },
+            {"time": 1750, "state": false},
+            {"time":   50, "state": true },
+            {"time":  550, "state": false},
+            {"time":   50, "state": true },
+            {"time": 1150, "state": false},
+            {"time":   50, "state": true },
+            {"time":  550, "state": false},
+            {"time":   50, "state": true },
+            {"time": 2950, "state": false},
+            {"time":   50, "state": true },
+            {"time": 1150, "state": false},
+            {"time":   50, "state": true },
+            {"time": 7150, "state": false},
+            {"time":   50, "state": true },
+            {"time": 5950, "state": false},
+            {"time":   50, "state": true },
+            {"time": 2450, "state": false},
+            {"time":   50, "state": true },
+            {"time":  550, "state": false},
+            {"time":   50, "state": true },
+            {"time": 1150, "state": false},
+            {"time":   50, "state": true },
+            {"time":  550, "state": false},
+            {"time":   50, "state": true },
+            {"time": 2950, "state": false},
+            {"time":   50, "state": true },
+            {"time": 1750, "state": false},
+            {"time":   50, "state": true },
+            {"time":  550, "state": false},
+            {"time":   50, "state": true },
+            {"time": 1150, "state": false},
+            {"time":   50, "state": true },
+            {"time":  550, "state": false},
+            {"time":   50, "state": true },
+            {"time": 2950, "state": false},
+            {"time":   50, "state": true },
+            {"time": 1150, "state": false},
+            {"time":   50, "state": true },
+            {"time": 7150, "state": false},
+            {"time":   50, "state": true },
+            {"time": 5950, "state": false},
+            {"time":   50, "state": true },
+            {"time":  850, "state": false}
+          ],
+          "repeat": 0
+        },
+        {
+          "pattern": [
+            {"time": 4200, "state": false},
+            {"time":   50, "state": true },
+            {"time":  550, "state": false},
+            {"time":   50, "state": true },
+            {"time":  850, "state": false},
+            {"time":   50, "state": true },
+            {"time": 5650, "state": false},
+            {"time":   50, "state": true },
+            {"time":  550, "state": false},
+            {"time":   50, "state": true },
+            {"time":  850, "state": false},
+            {"time":   50, "state": true },
+            {"time": 5650, "state": false},
+            {"time":   50, "state": true },
+            {"time":  550, "state": false},
+            {"time":   50, "state": true },
+            {"time":  550, "state": false},
+            {"time":   50, "state": true },
+            {"time": 5950, "state": false},
+            {"time":   50, "state": true },
+            {"time":  550, "state": false},
+            {"time":   50, "state": true },
+            {"time":  850, "state": false},
+            {"time":   50, "state": true },
+            {"time": 6350, "state": false},
+            {"time":   50, "state": true },
+            {"time":  550, "state": false},
+            {"time":   50, "state": true },
+            {"time":  850, "state": false},
+            {"time":   50, "state": true },
+            {"time": 5650, "state": false},
+            {"time":   50, "state": true },
+            {"time":  550, "state": false},
+            {"time":   50, "state": true },
+            {"time":  850, "state": false},
+            {"time":   50, "state": true },
+            {"time": 5650, "state": false},
+            {"time":   50, "state": true },
+            {"time":  550, "state": false},
+            {"time":   50, "state": true },
+            {"time":  550, "state": false},
+            {"time":   50, "state": true },
+            {"time": 5950, "state": false},
+            {"time":   50, "state": true },
+            {"time":  550, "state": false},
+            {"time":   50, "state": true },
+            {"time":  850, "state": false},
+            {"time":   50, "state": true },
+            {"time": 1150, "state": false}
+          ],
+          "repeat": 0
+        },
+        {
+          "pattern": [
+            {"time":   50, "state": true },
+            {"time": 1750, "state": false},
+            {"time":   50, "state": true },
+            {"time": 1750, "state": false},
+            {"time":   50, "state": true },
+            {"time": 1750, "state": false},
+            {"time":   50, "state": true },
+            {"time": 1750, "state": false},
+            {"time":   50, "state": true },
+            {"time": 1750, "state": false},
+            {"time":   50, "state": true },
+            {"time": 1750, "state": false},
+            {"time":   50, "state": true },
+            {"time": 1750, "state": false},
+            {"time":   50, "state": true },
+            {"time": 4150, "state": false},
+            {"time":   50, "state": true },
+            {"time": 1150, "state": false},
+            {"time":   50, "state": true },
+            {"time": 2350, "state": false},
+            {"time":   50, "state": true },
+            {"time": 3550, "state": false},
+            {"time":   50, "state": true },
+            {"time": 1150, "state": false},
+            {"time":   50, "state": true },
+            {"time": 1750, "state": false},
+            {"time":   50, "state": true },
+            {"time": 2450, "state": false},
+            {"time":   50, "state": true },
+            {"time": 1750, "state": false},
+            {"time":   50, "state": true },
+            {"time": 1750, "state": false},
+            {"time":   50, "state": true },
+            {"time": 1750, "state": false},
+            {"time":   50, "state": true },
+            {"time": 1750, "state": false},
+            {"time":   50, "state": true },
+            {"time": 1750, "state": false},
+            {"time":   50, "state": true },
+            {"time": 1750, "state": false},
+            {"time":   50, "state": true },
+            {"time": 1750, "state": false},
+            {"time":   50, "state": true },
+            {"time": 4150, "state": false},
+            {"time":   50, "state": true },
+            {"time": 1150, "state": false},
+            {"time":   50, "state": true },
+            {"time": 2350, "state": false},
+            {"time":   50, "state": true },
+            {"time": 3550, "state": false},
+            {"time":   50, "state": true },
+            {"time": 1150, "state": false},
+            {"time":   50, "state": true },
+            {"time": 1750, "state": false},
+            {"time":   50, "state": true },
+            {"time": 1450, "state": false}
+          ],
+          "repeat": 0
+        },
+        {
+          "pattern": [
+            {"time": 15000, "state": false},
+            {"time":    50, "state": true },
+            {"time":  1150, "state": false},
+            {"time":    50, "state": true },
+            {"time":  5950, "state": false},
+            {"time":    50, "state": true },
+            {"time":  1150, "state": false},
+            {"time":    50, "state": true },
+            {"time": 21050, "state": false},
+            {"time":    50, "state": true },
+            {"time":  1150, "state": false},
+            {"time":    50, "state": true },
+            {"time":  5950, "state": false},
+            {"time":    50, "state": true },
+            {"time":  1150, "state": false},
+            {"time":    50, "state": true },
+            {"time":  5050, "state": false}
+          ],
+          "repeat": 0
+        }
+      ]
+    },
+    {
+      "name": "Ave Maria - NSB",
+      "bells": [
+        {
+          "pattern": [
+            {"time":  1400, "state": false},
+            {"time":   400, "state": true },
+            {"time":  1200, "state": false},
+            {"time":   400, "state": true },
+            {"time":  2600, "state": false},
+            {"time":   400, "state": true },
+            {"time":  1200, "state": false},
+            {"time":   400, "state": true },
+            {"time":  7400, "state": false},
+            {"time":   400, "state": true },
+            {"time":  3400, "state": false},
+            {"time":   400, "state": true },
+            {"time":  1200, "state": false},
+            {"time":   400, "state": true },
+            {"time":  2600, "state": false},
+            {"time":   400, "state": true },
+            {"time":  1200, "state": false},
+            {"time":   400, "state": true },
+            {"time":  7400, "state": false},
+            {"time":   400, "state": true },
+            {"time":  2000, "state": false},
+            {"time":   400, "state": true },
+            {"time": 14800, "state": false},
+            {"time":   400, "state": true },
+            {"time": 13200, "state": false},
+            {"time":   400, "state": true },
+            {"time":  1600, "state": false}
+          ],
+          "repeat": 1000
+        },
+        {
+          "pattern": [
+            {"time": 10600, "state": false},
+            {"time":   300, "state": true },
+            {"time":  1100, "state": false},
+            {"time":   300, "state": true },
+            {"time":  2100, "state": false},
+            {"time":   300, "state": true },
+            {"time": 13700, "state": false},
+            {"time":   300, "state": true },
+            {"time":  1100, "state": false},
+            {"time":   300, "state": true },
+            {"time":  2100, "state": false},
+            {"time":   300, "state": true },
+            {"time": 11900, "state": false},
+            {"time":   300, "state": true },
+            {"time":  1100, "state": false},
+            {"time":   300, "state": true },
+            {"time":  1100, "state": false},
+            {"time":   300, "state": true },
+            {"time": 12100, "state": false},
+            {"time":   300, "state": true },
+            {"time":  1100, "state": false},
+            {"time":   300, "state": true },
+            {"time":  2100, "state": false},
+            {"time":   300, "state": true },
+            {"time":  2700, "state": false}
+          ],
+          "repeat": 1000
+        },
+        {
+          "pattern": [
+            {"time":  300, "state": true },
+            {"time": 4300, "state": false},
+            {"time":  300, "state": true },
+            {"time": 4300, "state": false},
+            {"time":  300, "state": true },
+            {"time": 3900, "state": false},
+            {"time":  300, "state": true },
+            {"time": 4100, "state": false},
+            {"time":  300, "state": true },
+            {"time": 4300, "state": false},
+            {"time":  300, "state": true },
+            {"time": 4300, "state": false},
+            {"time":  300, "state": true },
+            {"time": 3900, "state": false},
+            {"time":  300, "state": true },
+            {"time": 9300, "state": false},
+            {"time":  300, "state": true },
+            {"time": 1900, "state": false},
+            {"time":  300, "state": true },
+            {"time": 5300, "state": false},
+            {"time":  300, "state": true },
+            {"time": 7100, "state": false},
+            {"time":  300, "state": true },
+            {"time": 1900, "state": false},
+            {"time":  300, "state": true },
+            {"time": 3900, "state": false},
+            {"time":  300, "state": true },
+            {"time": 3700, "state": false}
+          ],
+          "repeat": 1000
+        },
+        {
+          "pattern": [
+            {"time": 37200, "state": false},
+            {"time":   300, "state": true },
+            {"time":  1900, "state": false},
+            {"time":   300, "state": true },
+            {"time": 12700, "state": false},
+            {"time":   300, "state": true },
+            {"time":  1900, "state": false},
+            {"time":   300, "state": true },
+            {"time": 11500, "state": false}
+          ],
+          "repeat": 1000
+        },
+        {
+          "pattern": [ {"time": 66400, "state": false} ],
+          "repeat": 1000
+        },
+        {
+          "pattern": [ {"time": 66400, "state": false} ],
+          "repeat": 1000
+        },
+        {
+          "pattern": [ {"time": 66400, "state": false} ],
+          "repeat": 1000
+        },
+        {
+          "pattern": [ {"time": 66400, "state": false} ],
+          "repeat": 1000
+        }
+      ]
+    },
+    {
+      "name": "Ave Maria - NSH",
+      "bells": [
+        {
+          "pattern": [ {"time": 28500, "state": false} ],
+          "repeat": 1000
+        },
+        {
+          "pattern": [ {"time": 28500, "state": false} ],
+          "repeat": 1000
+        },
+        {
+          "pattern": [ {"time": 28500, "state": false} ],
+          "repeat": 1000
+        },
+        {
+          "pattern": [ {"time": 28500, "state": false} ],
+          "repeat": 1000
+        },
+        {
+          "pattern": [
+            {"time":  600, "state": false},
+            {"time":   50, "state": true },
+            {"time":  550, "state": false},
+            {"time":   50, "state": true },
+            {"time": 1150, "state": false},
+            {"time":   50, "state": true },
+            {"time":  550, "state": false},
+            {"time":   50, "state": true },
+            {"time": 2950, "state": false},
+            {"time":   50, "state": true },
+            {"time": 1750, "state": false},
+            {"time":   50, "state": true },
+            {"time":  550, "state": false},
+            {"time":   50, "state": true },
+            {"time": 1150, "state": false},
+            {"time":   50, "state": true },
+            {"time":  550, "state": false},
+            {"time":   50, "state": true },
+            {"time": 2950, "state": false},
+            {"time":   50, "state": true },
+            {"time": 1150, "state": false},
+            {"time":   50, "state": true },
+            {"time": 7150, "state": false},
+            {"time":   50, "state": true },
+            {"time": 5950, "state": false},
+            {"time":   50, "state": true },
+            {"time":  850, "state": false}
+          ],
+          "repeat": 1000
+        },
+        {
+          "pattern": [
+            {"time": 4200, "state": false},
+            {"time":   50, "state": true },
+            {"time":  550, "state": false},
+            {"time":   50, "state": true },
+            {"time":  850, "state": false},
+            {"time":   50, "state": true },
+            {"time": 5650, "state": false},
+            {"time":   50, "state": true },
+            {"time":  550, "state": false},
+            {"time":   50, "state": true },
+            {"time":  850, "state": false},
+            {"time":   50, "state": true },
+            {"time": 5650, "state": false},
+            {"time":   50, "state": true },
+            {"time":  550, "state": false},
+            {"time":   50, "state": true },
+            {"time":  550, "state": false},
+            {"time":   50, "state": true },
+            {"time": 5950, "state": false},
+            {"time":   50, "state": true },
+            {"time":  550, "state": false},
+            {"time":   50, "state": true },
+            {"time":  850, "state": false},
+            {"time":   50, "state": true },
+            {"time": 1150, "state": false}
+          ],
+          "repeat": 1000
+        },
+        {
+          "pattern": [
+            {"time":   50, "state": true },
+            {"time": 1750, "state": false},
+            {"time":   50, "state": true },
+            {"time": 1750, "state": false},
+            {"time":   50, "state": true },
+            {"time": 1750, "state": false},
+            {"time":   50, "state": true },
+            {"time": 1750, "state": false},
+            {"time":   50, "state": true },
+            {"time": 1750, "state": false},
+            {"time":   50, "state": true },
+            {"time": 1750, "state": false},
+            {"time":   50, "state": true },
+            {"time": 1750, "state": false},
+            {"time":   50, "state": true },
+            {"time": 4150, "state": false},
+            {"time":   50, "state": true },
+            {"time": 1150, "state": false},
+            {"time":   50, "state": true },
+            {"time": 2350, "state": false},
+            {"time":   50, "state": true },
+            {"time": 3550, "state": false},
+            {"time":   50, "state": true },
+            {"time": 1150, "state": false},
+            {"time":   50, "state": true },
+            {"time": 1750, "state": false},
+            {"time":   50, "state": true },
+            {"time": 1450, "state": false}
+          ],
+          "repeat": 1000
+        },
+        {
+          "pattern": [
+            {"time": 15000, "state": false},
+            {"time":    50, "state": true },
+            {"time":  1150, "state": false},
+            {"time":    50, "state": true },
+            {"time":  5950, "state": false},
+            {"time":    50, "state": true },
+            {"time":  1150, "state": false},
+            {"time":    50, "state": true },
+            {"time":  5050, "state": false}
+          ],
+          "repeat": 1000
+        }
+      ]
+    },
+    {
+      "name": "Angelus + Ave H",
+      "bells": [
+        {
+          "pattern": [ {"time": 86500, "state": false} ],
+          "repeat": 0
+        },
+        {
+          "pattern": [
+            {"time":   300, "state": true },
+            {"time":  2300, "state": false},
+            {"time":   300, "state": true },
+            {"time":  2300, "state": false},
+            {"time":   300, "state": true },
+            {"time":  4300, "state": false},
+            {"time":   300, "state": true },
+            {"time":  2300, "state": false},
+            {"time":   300, "state": true },
+            {"time":  2300, "state": false},
+            {"time":   300, "state": true },
+            {"time":  4300, "state": false},
+            {"time":   300, "state": true },
+            {"time":  2300, "state": false},
+            {"time":   300, "state": true },
+            {"time":  2300, "state": false},
+            {"time":   300, "state": true },
+            {"time": 61400, "state": false}
+          ],
+          "repeat": 0
+        },
+        {
+          "pattern": [ {"time": 86500, "state": false} ],
+          "repeat": 0
+        },
+        {
+          "pattern": [ {"time": 86500, "state": false} ],
+          "repeat": 0
+        },
+        {
+          "pattern": [
+            {"time": 29100, "state": false},
+            {"time":    50, "state": true },
+            {"time":   550, "state": false},
+            {"time":    50, "state": true },
+            {"time":  1150, "state": false},
+            {"time":    50, "state": true },
+            {"time":   550, "state": false},
+            {"time":    50, "state": true },
+            {"time":  2950, "state": false},
+            {"time":    50, "state": true },
+            {"time":  1750, "state": false},
+            {"time":    50, "state": true },
+            {"time":   550, "state": false},
+            {"time":    50, "state": true },
+            {"time":  1150, "state": false},
+            {"time":    50, "state": true },
+            {"time":   550, "state": false},
+            {"time":    50, "state": true },
+            {"time":  2950, "state": false},
+            {"time":    50, "state": true },
+            {"time":  1150, "state": false},
+            {"time":    50, "state": true },
+            {"time":  7150, "state": false},
+            {"time":    50, "state": true },
+            {"time":  5950, "state": false},
+            {"time":    50, "state": true },
+            {"time":  2450, "state": false},
+            {"time":    50, "state": true },
+            {"time":   550, "state": false},
+            {"time":    50, "state": true },
+            {"time":  1150, "state": false},
+            {"time":    50, "state": true },
+            {"time":   550, "state": false},
+            {"time":    50, "state": true },
+            {"time":  2950, "state": false},
+            {"time":    50, "state": true },
+            {"time":  1750, "state": false},
+            {"time":    50, "state": true },
+            {"time":   550, "state": false},
+            {"time":    50, "state": true },
+            {"time":  1150, "state": false},
+            {"time":    50, "state": true },
+            {"time":   550, "state": false},
+            {"time":    50, "state": true },
+            {"time":  2950, "state": false},
+            {"time":    50, "state": true },
+            {"time":  1150, "state": false},
+            {"time":    50, "state": true },
+            {"time":  7150, "state": false},
+            {"time":    50, "state": true },
+            {"time":  5950, "state": false},
+            {"time":    50, "state": true },
+            {"time":   850, "state": false}
+          ],
+          "repeat": 0
+        },
+        {
+          "pattern": [
+            {"time": 32700, "state": false},
+            {"time":    50, "state": true },
+            {"time":   550, "state": false},
+            {"time":    50, "state": true },
+            {"time":   850, "state": false},
+            {"time":    50, "state": true },
+            {"time":  5650, "state": false},
+            {"time":    50, "state": true },
+            {"time":   550, "state": false},
+            {"time":    50, "state": true },
+            {"time":   850, "state": false},
+            {"time":    50, "state": true },
+            {"time":  5650, "state": false},
+            {"time":    50, "state": true },
+            {"time":   550, "state": false},
+            {"time":    50, "state": true },
+            {"time":   550, "state": false},
+            {"time":    50, "state": true },
+            {"time":  5950, "state": false},
+            {"time":    50, "state": true },
+            {"time":   550, "state": false},
+            {"time":    50, "state": true },
+            {"time":   850, "state": false},
+            {"time":    50, "state": true },
+            {"time":  6350, "state": false},
+            {"time":    50, "state": true },
+            {"time":   550, "state": false},
+            {"time":    50, "state": true },
+            {"time":   850, "state": false},
+            {"time":    50, "state": true },
+            {"time":  5650, "state": false},
+            {"time":    50, "state": true },
+            {"time":   550, "state": false},
+            {"time":    50, "state": true },
+            {"time":   850, "state": false},
+            {"time":    50, "state": true },
+            {"time":  5650, "state": false},
+            {"time":    50, "state": true },
+            {"time":   550, "state": false},
+            {"time":    50, "state": true },
+            {"time":   550, "state": false},
+            {"time":    50, "state": true },
+            {"time":  5950, "state": false},
+            {"time":    50, "state": true },
+            {"time":   550, "state": false},
+            {"time":    50, "state": true },
+            {"time":   850, "state": false},
+            {"time":    50, "state": true },
+            {"time":  1150, "state": false}
+          ],
+          "repeat": 0
+        },
+        {
+          "pattern": [
+            {"time": 28500, "state": false},
+            {"time":    50, "state": true },
+            {"time":  1750, "state": false},
+            {"time":    50, "state": true },
+            {"time":  1750, "state": false},
+            {"time":    50, "state": true },
+            {"time":  1750, "state": false},
+            {"time":    50, "state": true },
+            {"time":  1750, "state": false},
+            {"time":    50, "state": true },
+            {"time":  1750, "state": false},
+            {"time":    50, "state": true },
+            {"time":  1750, "state": false},
+            {"time":    50, "state": true },
+            {"time":  1750, "state": false},
+            {"time":    50, "state": true },
+            {"time":  4150, "state": false},
+            {"time":    50, "state": true },
+            {"time":  1150, "state": false},
+            {"time":    50, "state": true },
+            {"time":  2350, "state": false},
+            {"time":    50, "state": true },
+            {"time":  3550, "state": false},
+            {"time":    50, "state": true },
+            {"time":  1150, "state": false},
+            {"time":    50, "state": true },
+            {"time":  1750, "state": false},
+            {"time":    50, "state": true },
+            {"time":  2450, "state": false},
+            {"time":    50, "state": true },
+            {"time":  1750, "state": false},
+            {"time":    50, "state": true },
+            {"time":  1750, "state": false},
+            {"time":    50, "state": true },
+            {"time":  1750, "state": false},
+            {"time":    50, "state": true },
+            {"time":  1750, "state": false},
+            {"time":    50, "state": true },
+            {"time":  1750, "state": false},
+            {"time":    50, "state": true },
+            {"time":  1750, "state": false},
+            {"time":    50, "state": true },
+            {"time":  1750, "state": false},
+            {"time":    50, "state": true },
+            {"time":  4150, "state": false},
+            {"time":    50, "state": true },
+            {"time":  1150, "state": false},
+            {"time":    50, "state": true },
+            {"time":  2350, "state": false},
+            {"time":    50, "state": true },
+            {"time":  3550, "state": false},
+            {"time":    50, "state": true },
+            {"time":  1150, "state": false},
+            {"time":    50, "state": true },
+            {"time":  1750, "state": false},
+            {"time":    50, "state": true },
+            {"time":  1450, "state": false}
+          ],
+          "repeat": 0
+        },
+        {
+          "pattern": [
+            {"time": 43500, "state": false},
+            {"time":    50, "state": true },
+            {"time":  1150, "state": false},
+            {"time":    50, "state": true },
+            {"time":  5950, "state": false},
+            {"time":    50, "state": true },
+            {"time":  1150, "state": false},
+            {"time":    50, "state": true },
+            {"time": 21050, "state": false},
+            {"time":    50, "state": true },
+            {"time":  1150, "state": false},
+            {"time":    50, "state": true },
+            {"time":  5950, "state": false},
+            {"time":    50, "state": true },
+            {"time":  1150, "state": false},
+            {"time":    50, "state": true },
+            {"time":  5050, "state": false}
+          ],
+          "repeat": 0
+        }
+      ]
+    }
+  ]
 }

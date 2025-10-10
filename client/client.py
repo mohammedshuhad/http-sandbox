@@ -202,7 +202,7 @@ def set_repeat_bell(ip_address, repeat, interval, up_to_time, bell_index ):
 
 
 def add_bell(ip_address, bell_index_arr, repeat_count_arr, season_index, hour, minute,
-             schedule, dom_day, dom_occurence, dop_day, dop_month, dop_year,
+             schedule, dom_day, dom_occurence, dop_day, dop_month, dop_year, repeat_yearly,
              schedule_type):
     if len(bell_index_arr) != 3:
         print("Bell index array must have 3 elements")
@@ -253,12 +253,13 @@ def add_bell(ip_address, bell_index_arr, repeat_count_arr, season_index, hour, m
         "dop_day" : dop_day,
         "dop_month" : dop_month,
         "dop_year" : dop_year,
+        "repeat_yearly": repeat_yearly,
         "schedule_type" : schedule_type
     }
     return make_put_request(ip_address, "add_bell", data)
 
 def edit_bell(ip_address, bell_id, bell_index_arr, repeat_count_arr, season_index, hour, minute,
-             schedule, dom_day, dom_occurence, dop_day, dop_month, dop_year,
+             schedule, dom_day, dom_occurence, dop_day, dop_month, dop_year, repeat_yearly,
              schedule_type):
     
     data = {
@@ -274,6 +275,7 @@ def edit_bell(ip_address, bell_id, bell_index_arr, repeat_count_arr, season_inde
         "dop_day" : dop_day,
         "dop_month" : dop_month,
         "dop_year" : dop_year,
+        "repeat_yearly": repeat_yearly,
         "schedule_type" : schedule_type
     }
     print(data)
@@ -677,10 +679,10 @@ if __name__ == "__main__":
     # get_response = dom_view_bell(ip)
     # get_response = get_all_dom(ip)
 
-    # if get_response:
-    #     print(get_response)
-    # else:
-    #     print(f"Failed to get for dom_index")
+    if get_response:
+        print(get_response)
+    else:
+        print(f"Failed to get for dom_index")
 
 
     # put_response = set_season(ip, 1)
@@ -689,11 +691,10 @@ if __name__ == "__main__":
     # put_response = set_select_bell(ip, 8, True)
     # put_response = set_ring_bell(ip, 0, True, False)
     # put_response = set_repeat_bell(ip, False, 1, 1, 3)
-    # put_response = add_bell(ip, [3, 1, 1], [1, 0, 0], 0, 14, 30, [False,True,False,False,False,False,True], 2, 2, 1, 1, 2025, 1)
+    # put_response = add_bell(ip, [3, 1, 1], [1, 0, 0], 0, 14, 30, [False,True,False,False,False,False,True], 2, 2, 1, 1, 2025, 1,2)
+    # put_response = add_bell(ip, [3, 1, 1], [1, 0, 0], 0, 14, 30, [False,True,False,False,False,False,True], 2, 2, 1, 5, 2025, 0,2)
     # put_response = send_firmware(ip, "pulsator-firmware.bin")
-
-    # put_response = edit_bell(ip, 3,[3, 3 ,3],[1, 2, 3],4,15,30,[False,True,False,False,False,False,True],1,1,1,1,2025,2)
-    
+    # put_response = edit_bell(ip, 1,[3, 3, 3],[1, 2, 3],3,15,30,[False,True,False,False,False,False,True],1,1,1,1,2001,1, 0)
     # put_response = delete_bell(ip, 1)
     # put_response = set_dop(ip, "Day of Program", False, 25, 3, 35)
     # put_response = dop_add_bell(ip, 3, 13, 50)
@@ -712,8 +713,8 @@ if __name__ == "__main__":
     #     print("Failed to set")
 
 
-    if get_response:
-        print("GET response from the client(Get):")
-        print(get_response)
-    else:
-        print("Failed to get")
+    # if get_response:
+    #     print("GET response from the client(Get):")
+    #     print(get_response)
+    # else:
+    #     print("Failed to get")
