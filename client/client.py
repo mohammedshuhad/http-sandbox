@@ -281,6 +281,21 @@ def edit_bell(ip_address, bell_id, bell_index_arr, repeat_count_arr, season_inde
     print(data)
     return make_put_request(ip_address, "edit_bell", data)
 
+def activate_bells(ip_address, bell_id_arr, activate, dom_day, dom_occurence, dop_day, dop_month, dop_year, repeat_yearly, schedule_type):
+
+    data = {
+        "bell_id_arr": bell_id_arr,
+        "activate": activate,
+        "dom_day": dom_day,
+        "dom_occurence": dom_occurence,
+        "dop_day": dop_day,
+        "dop_month": dop_month,
+        "dop_year": dop_year,
+        "repeat_yearly": repeat_yearly,
+        "schedule_type": schedule_type
+    }
+    return make_put_request(ip_address, "activate_bells", data)
+
 def view_bells_with_query(ip_address, query):
 
     url = f"http://{ip_address}/view_bells?type={query}"
@@ -654,8 +669,10 @@ def test_all_put(ip):
 
 if __name__ == "__main__":
 
-    ip1 = "10.228.220.243/"  # Replace with your ESP32's IP address
-    ip2 = "10.228.220.180/"  # Replace with your second ESP32's IP address
+    # ip1 = "10.228.220.243/"  # Replace with your ESP32's IP address
+    # ip2 = "10.228.220.180/"  # Replace with your second ESP32's IP address
+
+    ip = "192.168.29.56"
 
 
     # test_all_get(ip)
@@ -672,17 +689,17 @@ if __name__ == "__main__":
 
 
     
-    get_response = get_and_set(ip1,ip2)
+    # get_response = get_and_set(ip1,ip2)
 
 
     # get_response = dop_view_bell(ip)
     # get_response = dom_view_bell(ip)
     # get_response = get_all_dom(ip)
 
-    if get_response:
-        print(get_response)
-    else:
-        print(f"Failed to get for dom_index")
+    # if get_response:
+    #     print(get_response)
+    # else:
+    #     print(f"Failed to get for dom_index")
 
 
     # put_response = set_season(ip, 1)
@@ -691,7 +708,7 @@ if __name__ == "__main__":
     # put_response = set_select_bell(ip, 8, True)
     # put_response = set_ring_bell(ip, 0, True, False)
     # put_response = set_repeat_bell(ip, False, 1, 1, 3)
-    # put_response = add_bell(ip, [3, 1, 1], [1, 0, 0], 0, 14, 30, [False,True,False,False,False,False,True], 2, 2, 1, 1, 2025, 1,2)
+    # put_response = add_bell(ip, [3, 1, 1], [1, 0, 0], 0, 14, 45, [False,True,False,False,False,False,True], 2, 2, 1, 1, 2025, 1,2)
     # put_response = add_bell(ip, [3, 1, 1], [1, 0, 0], 0, 14, 30, [False,True,False,False,False,False,True], 2, 2, 1, 5, 2025, 0,2)
     # put_response = send_firmware(ip, "pulsator-firmware.bin")
     # put_response = edit_bell(ip, 1,[3, 3, 3],[1, 2, 3],3,15,30,[False,True,False,False,False,False,True],1,1,1,1,2001,1, 0)
@@ -706,11 +723,13 @@ if __name__ == "__main__":
     # put_response = set_all_dom(ip)
     # put_response = set_bell_patterns(ip)
 
-    # if put_response:
-    #     print("PUT Response from server (Set):")
-    #     print(put_response)
-    # else:
-    #     print("Failed to set")
+    put_response = activate_bells(ip, [0,1], False, 2, 2, 28, 10, 2025,1, 2)
+
+    if put_response:
+        print("PUT Response from server (Set):")
+        print(put_response)
+    else:
+        print("Failed to set")
 
 
     # if get_response:
