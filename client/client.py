@@ -20,6 +20,20 @@ def make_get_request_with_dom_query(ip_address, endpoint, query_param):
     except requests.exceptions.RequestException as e:
         print(f"An error occurred: {e}")
         return None
+    
+def make_view_get_request_with_query(ip_address, type, page, season):
+    url = f"http://{ip_address}:80/view_bells?type={type}&page={page}&season={season}"
+    headers = {
+        'Accept': 'application/json',
+        'Authorization': f'Basic {encoded}'
+    }
+    try:
+        response = requests.get(url, headers=headers)
+        response.raise_for_status()  # Raise an error for bad status codes
+        return response.text
+    except requests.exceptions.RequestException as e:
+        print(f"An error occurred: {e}")
+        return None
 
 def make_get_request(ip_address, endpoint):
 
@@ -47,9 +61,8 @@ def get_repeat_bell(ip_address):
     repeat_bell_info = make_get_request(ip_address, endpoint)
     return repeat_bell_info
 
-def view_bells(ip_address):
-    endpoint = "view_bells"
-    view_info = make_get_request(ip_address, endpoint)
+def view_bells(ip_address, type, page, season):
+    view_info = make_view_get_request_with_query(ip_address, type, page, season)
     return view_info
 
 def get_all_dom(ip_address):
@@ -77,6 +90,16 @@ def dop_view_bell(ip_address):
     endpoint = "dop_view_bell"
     dop_info = make_get_request(ip_address, endpoint)
     return dop_info
+
+def get_patterns(ip_address):
+    endpoint = "get_patterns"
+    patterns_info = make_get_request(ip_address, endpoint)
+    return patterns_info
+
+def get_status(ip_address):
+    endpoint = "get_status"
+    status_info = make_get_request(ip_address, endpoint)
+    return status_info
 
 ####                                              SET                                                  ####
 
@@ -154,7 +177,7 @@ def set_select_bell(ip_address, bell_index, state):
     }
     return make_put_request(ip_address, "set_select_bell", data)
 
-def set_ring_bell(ip_address, bell_index, ring, stop):
+def set_ring_bell(ip_address, bell_index, repeat_count,ring, stop):
     if bell_index not in (0, 1, 2, 3):
         print("Enter valid bell index")
         return None
@@ -172,6 +195,7 @@ def set_ring_bell(ip_address, bell_index, ring, stop):
     
     data = {
         "bell_index": bell_index,
+        "repeat_count": repeat_count,
         "ring_now": ring,
         "stop_ring": stop
         
@@ -275,11 +299,20 @@ def edit_bell(ip_address, bell_id, bell_index_arr, repeat_count_arr, season_inde
         "dop_day" : dop_day,
         "dop_month" : dop_month,
         "dop_year" : dop_year,
+        "activate": True,
         "repeat_yearly": repeat_yearly,
         "schedule_type" : schedule_type
     }
     print(data)
     return make_put_request(ip_address, "edit_bell", data)
+
+# ...existing code...
+
+def send_raw(ip_address, endpoint, data):
+    """Send data as-is to the specified endpoint without any reordering or validation"""
+    return make_put_request(ip_address, endpoint, data)
+
+# ...existing code...
 
 def activate_bells(ip_address, bell_id_arr, activate, dom_day, dom_occurence, dop_day, dop_month, dop_year, repeat_yearly, schedule_type):
 
@@ -417,12 +450,22 @@ def dop_add_bell(ip_address, bell_index, hour, minute):
     }
     return make_put_request(ip_address, "dop_add_bell", data)
 
-def dop_edit_bell(ip_address, bell_id, bell_index, hour, minute):
+# def dop_edit_bell(ip_address, bell_id, bell_index, hour, minute):
+#     data = {
+#         "bell_id": bell_id,
+#         "bell_index": bell_index,
+#         "hour": hour,
+#         "minute": minute
+#     }
+#     return make_put_request(ip_address, "dop_edit_bell", data)
+
+def dop_edit_bell(ip_address, bell_id, bell_index_arr, repeat_count_arr, hour, minute):
     data = {
         "bell_id": bell_id,
-        "bell_index": bell_index,
+        "bell_index_arr": bell_index_arr,
+        "repeat_count": repeat_count_arr,
         "hour": hour,
-        "minute": minute
+        "min": minute
     }
     return make_put_request(ip_address, "dop_edit_bell", data)
 
@@ -483,6 +526,9 @@ def set_bell_patterns(ip_address):
     if patterns:
         return make_put_request(ip_address, "set_patterns", patterns)
     return None
+
+def set_details(ip_address, details):
+    return make_put_request(ip_address, "set_details", details)
 
 
 # def get_and_set(ip1, ip2):
@@ -672,7 +718,7 @@ if __name__ == "__main__":
     # ip1 = "10.228.220.243/"  # Replace with your ESP32's IP address
     # ip2 = "10.228.220.180/"  # Replace with your second ESP32's IP address
 
-    ip = "192.168.29.56"
+    ip = "192.168.1.13"
 
 
     # test_all_get(ip)
@@ -681,7 +727,18 @@ if __name__ == "__main__":
     # get_response = get_ring_bell(ip)
     # get_response = get_repeat_bell(ip)
     # get_response = get_dop(ip)
-    # get_response = view_bells(ip)
+    # get_response = view_bells(ip,0,0,2)
+    # get_response = dop_edit_bell(ip, 0, 0, 4, 55)
+
+    # put_response = set_details(ip, {"key": "value"})
+
+    # if put_response:
+    #     print("PUT Response from server (Set):")
+    #     print(put_response)
+    # else:
+    #     print("Failed to set")
+
+    # get_response = get_status(ip)
 
 
 
@@ -695,23 +752,33 @@ if __name__ == "__main__":
     # get_response = dop_view_bell(ip)
     # get_response = dom_view_bell(ip)
     # get_response = get_all_dom(ip)
+    # get_response = get_patterns(ip)
 
     # if get_response:
     #     print(get_response)
     # else:
     #     print(f"Failed to get for dom_index")
 
+# if get_response:
+#     print(get_response)
+#     # Save response to file
+#     with open('response.txt', 'w') as f:
+#         f.write(get_response)
+#     print("Response saved to response.txt")
+# else:
+#     print(f"Failed to get for dom_index")
+
 
     # put_response = set_season(ip, 1)
     # put_response = set_auto_sleep(ip, False)
     # put_response = set_auto_bell(ip, False)
     # put_response = set_select_bell(ip, 8, True)
-    # put_response = set_ring_bell(ip, 0, True, False)
+    # put_response = set_ring_bell(ip, 2, 2, True, False)
     # put_response = set_repeat_bell(ip, False, 1, 1, 3)
     # put_response = add_bell(ip, [3, 1, 1], [1, 0, 0], 0, 14, 45, [False,True,False,False,False,False,True], 2, 2, 1, 1, 2025, 1,2)
     # put_response = add_bell(ip, [3, 1, 1], [1, 0, 0], 0, 14, 30, [False,True,False,False,False,False,True], 2, 2, 1, 5, 2025, 0,2)
     # put_response = send_firmware(ip, "pulsator-firmware.bin")
-    # put_response = edit_bell(ip, 1,[3, 3, 3],[1, 2, 3],3,15,30,[False,True,False,False,False,False,True],1,1,1,1,2001,1, 0)
+    # put_response = edit_bell(ip, 0,[3],[1],3,16,30,[False,True,False,False,False,False,True],1,1,1,1,2010,1, 2)
     # put_response = delete_bell(ip, 1)
     # put_response = set_dop(ip, "Day of Program", False, 25, 3, 35)
     # put_response = dop_add_bell(ip, 3, 13, 50)
@@ -723,17 +790,30 @@ if __name__ == "__main__":
     # put_response = set_all_dom(ip)
     # put_response = set_bell_patterns(ip)
 
-    put_response = activate_bells(ip, [0,1], False, 2, 2, 28, 10, 2025,1, 2)
+    # put_response = activate_bells(ip, [0,1], False, 2, 2, 28, 10, 2025,1, 2)
+
+    # put_response = set_details(ip, {"key": "value"})
+
+    put_response = send_raw(ip, "edit_bell", {
+        "bell_id": 0,
+        "season_index": 0,
+        "hour": 17,
+        "min": 30,
+        "schedule": [],
+        "repeat_count": [1],
+        "bell_index_arr": [4],
+        "dom_day": 0,
+        "dom_occurence": 0,
+        "dop_day": 31,
+        "dop_month": 3,
+        "dop_year": 2026,
+        "repeat_yearly": False,
+        "schedule_type": 2,
+        "activate": True
+    })
 
     if put_response:
         print("PUT Response from server (Set):")
         print(put_response)
     else:
         print("Failed to set")
-
-
-    # if get_response:
-    #     print("GET response from the client(Get):")
-    #     print(get_response)
-    # else:
-    #     print("Failed to get")
